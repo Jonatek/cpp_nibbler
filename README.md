@@ -127,6 +127,22 @@ git branch -d newfeature
 DO NOT DO THAT. Exept you know exactly what you're doing. Then, you should know 
 the command to type :D.
 
+## /!\ Important note
+
+Nothing have to be directly push on `master`. It's striclty forbidden !
+Execpt there is a good reason AND everyone agree.
+
+Do not forget that you have to write in english. Comment your pull request,
+squash your commit, pull and commit often on your branch.
+
+You should really read this, I hope you will.
+Because there is many things that missing and maybe mistake that I made, then
+you should offer a correction or improve this.
+
+If you have any problem with the use of git, come ask me. I will show you how 
+to do it, and also explain it to you. It's a good way to learn git, and you 
+will see, it's a really powerfull tool.
+
 # C++ Coding Standards
 
 This document attempts to describe a few C++ coding standards that are being used.
