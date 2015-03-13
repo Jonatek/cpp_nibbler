@@ -1,5 +1,14 @@
 # GitHub Workflow - Work as a Team
 
+I know this is a little project, but I want to do it properly, and show to you
+how we should work as a group/team. I may be too much. BUT I STILL THINK, that
+we must start to work like this, or we will fall back on our bad style of
+teamworking. SO PLEASE, PROVE IT TO ME THAT WE CAN MAKE IT.
+I think everyone on us, can be really fluent with git. At the start you may
+think that it's may not be really usefull, but more you masteries it, more you
+will want to use it. It's really way more usefull that ANYTHING else, to manage 
+a code repository.
+
 GitHub Flow is a lightweight, branch-based workflow that supports teams and
 projects where deployments are made regularly. This guide explains how and why
 GitHub Flow works.
