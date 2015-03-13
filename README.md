@@ -1,3 +1,132 @@
+# GitHub Workflow - Work as a Team
+
+GitHub Flow is a lightweight, branch-based workflow that supports teams and
+projects where deployments are made regularly. This guide explains how and why
+GitHub Flow works.
+
+## Doing Your Work
+
+### Create a Branch
+
+When you're working on a project, you're going to have a bunch of different
+features or ideas in progress at any given time – some of which are ready to go,
+ and others which are not. Branching exists to help you manage this workflow.
+
+When you create a branch in your project, you're creating an environment where
+you can try out new ideas. Changes you make on a branch don't affect the
+`master` branch, so you're free to experiment and commit changes, safe in the
+knowledge that your branch won't be merged until it's ready to be reviewed by
+someone you're collaborating with.
+
+### ProTip
+Branching is a core concept in Git, and the entire GitHub Flow is based upon it.
+There's only one rule: anything in the `master` branch is always fonctionnal.
+
+To create a new branch and start working on it:
+
+```shell
+# Checkout the master branch - you want your new branch to come from master
+git checkout master
+
+# Create a new branch named newfeature (give branch a simple informative name)
+git branch newfeature
+
+# Switch to your new branch
+git checkout newfeature
+```
+
+### Add commits
+
+Once your branch has been created, it's time to start making changes. Whenever
+you add, edit, or delete a file, you're making a commit, and adding them to your
+branch. This process of adding commits keeps track of your progress as you work
+on a feature branch.
+
+Commits also create a transparent history of your work that others can follow to
+understand what you've done and why. Each commit has an associated commit
+message, which is a description explaining why a particular change was made.
+Furthermore, each commit is considered a separate unit of change.
+This lets you roll back changes if a bug is found, or if you decide to head in
+a different direction.
+
+### ProTip
+
+Commit messages are important, especially since Git tracks your changes and
+then displays them as commits once they're pushed to the server.
+By writing clear commit messages, you can make it easier for other people to
+follow along and provide feedback.
+
+## Open a Pull Request
+
+### Cleaning Up Your Work
+
+Prior to submitting your pull request, you might want to do a few things to
+clean up your branch and make it as simple as possible for the original repo's
+maintainer to test, accept, and merge your work.
+
+You can open a Pull Request at any point during the development process: when you have little or no code but want to share some screenshots or general ideas, when you're stuck and need help or advice, or when you're ready for someone to review your work. By using GitHub's @mention system in your Pull Request message, you can ask for feedback from specific people or teams, whether they're down the hall or ten time zones away.
+
+If any commits have been made to the upstream master branch, you should rebase
+your development branch so that merging it will be a simple fast-forward that
+won't require any conflict resolution work.
+
+```shell
+# Update master with your repo's master branch
+git checkout master
+git pull origin master
+
+# If there were any new commits, rebase your development branch
+git checkout newfeature
+git rebase master
+```
+
+Now, it may be desirable to squash some of your smaller commits down into a
+small number of larger more cohesive commits. You can do this with an
+interactive rebase :
+
+```shell
+# Rebase all commits on your development branch
+git checkout 
+git rebase -i master
+```
+
+This will open up a text editor where you can specify which commits to squash.
+USE VIM ! PLEASE. It's way more simple and looks more BADASS.
+The git rebase is an awesome and very usefull feature you should use it.
+
+### Submitting - Discuss and review your code
+
+EVERYTHING MUST BE WRITE IN ENGLISH ! PLEASE.
+
+Once a Pull Request has been opened, the person or team reviewing your changes may have questions or comments. Perhaps the coding style doesn't match project guidelines, the change is missing unit tests, or maybe everything looks great and props are in order. Pull Requests are designed to encourage and capture this type of conversation.
+
+You can also continue to push to your branch in light of discussion and feedback about your commits. If someone comments that you forgot to do something or if there is a bug in the code, you can fix it in your branch and push up the change. GitHub will show your new commits and any additional feedback you may receive in the unified Pull Request view.
+
+### ProTip
+
+Pull Request comments are written in Markdown, so you can embed images and emoji, use pre-formatted text blocks, and other lightweight formatting.
+
+## Accepting and Merging a Pull Request
+
+The creator of a pull request should NEVER merge it himself. Why ?
+Because the code that he want to push MUST be check by someone else. If this is 
+okay for him, he should leave a comment like "ok for me, merging", or whatever...
+If anything is wrong, he must comment the pull request for the AUTHOR to correct
+it. Then we can improve our self, and also check and know what everyone is doing.
+
+In cases where the merge would be a simple fast-forward, you can automatically do the merge by just clicking the button on the pull request page on GitHub.
+Do not forget to delete the branch after the merge !
+GitHub will ask it to you after it, but if you want to do it manually:
+
+```shell
+git branch -d newfeature
+```
+
+### Manually Merging a Pull Request
+
+DO NOT DO THAT. Exept you know exactly what you're doing. Then, you should know 
+the command to type :D.
+
 # C++ Coding Standards
 
 This document attempts to describe a few C++ coding standards that are being used.
