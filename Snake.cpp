@@ -5,21 +5,20 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 13:44:08 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 24 14:47:02 2015 Jean-Paul SAYSANA
 //
 
-#include "Snake.hh"
+#include "Snake.hpp"
 
 Snake::Snake()
 {
-}
-
-void		Snake::eatFruits()
-{
+  this->snakeSize = 3;
+  this->direction = NONE;
 }
 
 void		Snake::growUp()
 {
+  this->snakeSize += 1;
 }
 
 void		Snake::moveUp()
