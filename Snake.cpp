@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 13:07:52 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 24 13:44:08 2015 Jean-Paul SAYSANA
 //
 
 #include "Snake.hh"
@@ -37,7 +37,7 @@ void		Snake::moveLeft()
   this->direction = LEFT;
 }
 
-void	        Snake::moveRight()
+void		Snake::moveRight()
 {
   this->direction = RIGHT;
 }

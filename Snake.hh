@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 13:08:46 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 24 13:41:24 2015 Jean-Paul SAYSANA
 //
 
 #ifndef		SNAKE_H_
@@ -45,10 +45,6 @@ public:
       LEFT,
       RIGHT
     };
-
-  /******************************/
-  /*
-  /******************************/
 
 };
 
