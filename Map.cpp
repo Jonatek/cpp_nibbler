@@ -5,14 +5,13 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 13:21:23 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 13:50:24 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 24 14:05:40 2015 Jean-Paul SAYSANA
 //
 
 #include "Map.hh"
 
 Map::Map(int x, int y)
 {
-  this->map[x][y];
   
 }
 
