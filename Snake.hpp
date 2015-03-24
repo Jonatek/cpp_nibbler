@@ -5,16 +5,17 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 14:09:01 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 24 14:47:06 2015 Jean-Paul SAYSANA
 //
 
-#ifndef		SNAKE_H_
-# define	SNAKE_H_
+#ifndef		SNAKE_HPP_
+# define	SNAKE_HPP_
 
 class		Snake
 {
 private:
   int		direction;
+  int		snakeSize;
 
 public:
   Snake();
@@ -26,7 +27,6 @@ public:
   /*		CHANGES		*/
   /******************************/
 
-  void		eatFruits();
   void		growUp();
 
   /******************************/
@@ -46,7 +46,6 @@ public:
       DOWN,
       LEFT
     };
-  
 };
 
-#endif	/*	!SNAKE_H_	*/
+#endif	/*	!SNAKE_HPP_	*/
