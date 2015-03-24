@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 13:21:23 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 24 14:36:28 2015 Daniel Han
+// Last update Tue Mar 24 15:46:10 2015 Daniel Han
 //
 
 #include "Map.hh"
