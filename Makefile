@@ -5,33 +5,47 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Tue Mar 24 15:36:52 2015 Jonathan Quach
+## Last update Wed Mar 25 22:25:26 2015 Jonathan Quach
 ##
 
-NAME		= 	nibbler
+CORE		= 	nibbler
 
-CPPFLAGS	+= 	-W -Wall -Werror -Wextra
+CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
 
 CPP		= 	g++
 
-SRC		= 	main.cpp \
+CORE_SRC	= 	main.cpp \
 			ErrorException.cpp \
 			Nibbler.cpp \
 
-OBJ		= 	$(SRC:.cpp=.o)
+CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)
+
+SDL		=	lib_nibbler_sdl.so
+
+SDLFLAGS	=	-lSDL2
+
+SDL_SRC		=	SDLGraphic.cpp \
+			ErrorException.cpp \
+
+SDL_OBJ		=	$(SDL_SRC:.cpp=.o)
+
+SHARED		=	-shared
 
 RM		= 	rm -f
 
-all:		$(NAME)
+all:		$(CORE) $(SDL)
 
-$(NAME): 	$(OBJ)
-	 	$(CPP) -o $(NAME) $(OBJ)
+$(CORE): 	$(CORE_OBJ)
+	 	$(CPP) -o $(CORE) $(CORE_OBJ) -ldl
+
+$(SDL):		$(SDL_OBJ)
+		$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED)
 
 clean:
-		$(RM) $(OBJ)
+		$(RM) $(CORE_OBJ) $(SDL_OBJ)
 
 fclean: 	clean
-		$(RM) $(NAME)
+		$(RM) $(CORE) $(SDL)
 
 re: 		fclean all
 
