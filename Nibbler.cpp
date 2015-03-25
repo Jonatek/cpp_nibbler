@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Wed Mar 25 22:26:25 2015 Jonathan Quach
+// Last update Wed Mar 25 22:28:06 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
@@ -44,7 +44,8 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   if ((dlHandle = dlopen(libName.c_str(), RTLD_LAZY)) == NULL)
     throw ErrorException(dlerror());
   IGui *(*external_creator)();
-  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(dlHandle, "create_new_lib"));
+  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(dlHandle,
+							 "create_lib_instance"));
   if (external_creator == NULL)
     {
       char *err = dlerror();

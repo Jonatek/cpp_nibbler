@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Wed Mar 25 22:23:37 2015 Jonathan Quach
+// Last update Wed Mar 25 22:28:22 2015 Jonathan Quach
 //
 
 #include "SDLGraphic.hpp"
@@ -42,7 +42,7 @@ void SDLGraphic::updateEvent()
 
 extern "C"
 {
-  IGui *create_new_lib()
+  IGui *create_lib_instance()
   {
     return new SDLGraphic;
   }
