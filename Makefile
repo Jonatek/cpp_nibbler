@@ -5,7 +5,7 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Wed Mar 25 22:25:26 2015 Jonathan Quach
+## Last update Thu Mar 26 23:53:34 2015 Jonathan Quach
 ##
 
 CORE		= 	nibbler
@@ -17,6 +17,7 @@ CPP		= 	g++
 CORE_SRC	= 	main.cpp \
 			ErrorException.cpp \
 			Nibbler.cpp \
+			Event.cpp \
 
 CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)
 
@@ -26,6 +27,7 @@ SDLFLAGS	=	-lSDL2
 
 SDL_SRC		=	SDLGraphic.cpp \
 			ErrorException.cpp \
+			Event.cpp \
 
 SDL_OBJ		=	$(SDL_SRC:.cpp=.o)
 
@@ -36,7 +38,7 @@ RM		= 	rm -f
 all:		$(CORE) $(SDL)
 
 $(CORE): 	$(CORE_OBJ)
-	 	$(CPP) -o $(CORE) $(CORE_OBJ) -ldl
+	 	$(CPP) -o $(CORE) $(CORE_OBJ) -ldl -g3
 
 $(SDL):		$(SDL_OBJ)
 		$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED)

@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 14:46:15 2015 Jonathan Quach
-// Last update Tue Mar 24 20:59:59 2015 Jonathan Quach
+// Last update Thu Mar 26 21:57:32 2015 Jonathan Quach
 //
 
 #ifndef _NIBBLER_HPP_
@@ -18,6 +18,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "IGui.hpp"
+
 class Nibbler
 {
 private:
@@ -25,11 +27,17 @@ private:
   int	_winY;
   int	_caseX;
   int	_caseY;
+  void	*_handle;
+  IGui  *_gui;
+  bool	_loop;
   // Map	*_map;
 
 public:
   Nibbler(const std::vector<std::string> &argv);
   ~Nibbler();
+
+  void loop();
+  void *getHandler() const;
 };
 
 #endif

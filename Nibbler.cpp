@@ -5,20 +5,20 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Wed Mar 25 22:28:06 2015 Jonathan Quach
+// Last update Thu Mar 26 23:53:19 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
 #include "Nibbler.hpp"
 #include "ErrorException.hpp"
 #include "IGui.hpp"
+#include "Event.hpp"
 
 Nibbler::Nibbler(const std::vector<std::string> &argv)
-  : _winX(1024), _winY(980)
+  : _winX(1024), _winY(980), _loop(true)
 {
   int width;
   int height;
-  void *dlHandle;
   std::string libName;
   std::stringstream ss;
 
@@ -40,22 +40,56 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   ss.str(argv[3]);
   ss >> libName;
 
-  // dl function
-  if ((dlHandle = dlopen(libName.c_str(), RTLD_LAZY)) == NULL)
+  // void *dlopen(const char *filename, int flag)
+  // dlopen loads the dynamic library file, and return an "opaque" handle
+  // RTDL_LAZY -> lazy binding. Only resolve symbols as the code it need it is exec
+  // RTDL_NOW -> all undefined symbols in the lib are resolved before dlopen return
+
+  // char *dlerror(void)
+  // return an human readeable string describing the most recent error
+  // from dlopen, dlsym or dlclose. NULL if no error
+
+  if ((_handle = dlopen(libName.c_str(), RTLD_LAZY)) == NULL)
     throw ErrorException(dlerror());
+
+  // void *dlsym(void *handle, const char *symbol)
+  // take handle and an symbol name, it return the address where the symbol is
+  // loaded into memory. NULL in error, but it can also return NULL as a symbol
+  // so it's not an error. call dlerror to check that.
+
+  // v
   IGui *(*external_creator)();
-  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(dlHandle,
+  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(_handle,
 							 "create_lib_instance"));
+
   if (external_creator == NULL)
     {
       char *err = dlerror();
       throw ErrorException(std::string("Error searching for symbol : ") + err);
     }
-  IGui *graphicLib = external_creator();
-  graphicLib->createWindow(_winX, _winY);  
+
+   _gui = external_creator();
 }
 
 Nibbler::~Nibbler()
 {
 
+}
+
+void Nibbler::loop()
+{
+  Event _ev;
+
+  _gui->createWindow(_winX, _winY);
+  while (_loop)
+    {
+      _gui->updateEvent(_ev);
+      if (_ev.getEventType() == QUIT)
+	_loop = false;
+    }
+}
+
+void *Nibbler::getHandler() const
+{
+  return _handle;
 }

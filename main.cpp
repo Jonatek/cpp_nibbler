@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 10:13:04 2015 Jonathan Quach
-// Last update Tue Mar 24 15:46:39 2015 Jonathan Quach
+// Last update Thu Mar 26 23:49:56 2015 Jonathan Quach
 //
 
 #include "Nibbler.hpp"
@@ -18,13 +18,17 @@ int		main(int ac, char **av)
     argv.push_back(std::string(av[i]));
   try
     {
+      // srand if for later
       srand(time(NULL));
       Nibbler *nib = new Nibbler(argv);
-      (void)nib;
+      nib->loop();
+
+      // dlclose(nib->getHandler());
     }
   catch (std::exception const &e)
     {
       std::cerr << e.what() << std::endl;
-    }  
+      return -1;
+    }
   return 0;
 }

@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Wed Mar 25 22:18:46 2015 Jonathan Quach
+// Last update Thu Mar 26 22:00:58 2015 Jonathan Quach
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -15,6 +15,7 @@
 #include <string>
 #include "IGui.hpp"
 #include "ErrorException.hpp"
+#include "Event.hpp"
 
 class SDLGraphic : public IGui
 {
@@ -26,7 +27,7 @@ public:
   ~SDLGraphic();
 
   virtual void createWindow(const int &x, const int &y);
-  virtual void updateEvent();
+  virtual void updateEvent(Event &);
 };
 
 #endif
