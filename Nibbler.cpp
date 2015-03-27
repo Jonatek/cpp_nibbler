@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Thu Mar 26 23:53:19 2015 Jonathan Quach
+// Last update Thu Mar 26 23:55:43 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
@@ -57,7 +57,6 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   // loaded into memory. NULL in error, but it can also return NULL as a symbol
   // so it's not an error. call dlerror to check that.
 
-  // v
   IGui *(*external_creator)();
   external_creator = reinterpret_cast<IGui* (*)()>(dlsym(_handle,
 							 "create_lib_instance"));
