@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 10:13:04 2015 Jonathan Quach
-// Last update Sat Mar 28 16:48:15 2015 Jonathan Quach
+// Last update Sun Mar 29 18:03:26 2015 Jean-Paul SAYSANA
 //
 
 #include "Nibbler.hpp"
