@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Mar 29 15:43:13 2015 Jonathan Quach
+// Last update Sun Mar 29 16:02:16 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -37,7 +37,7 @@ void SDLGraphic::createWindow(int const &x, int const &y)
     throw ErrorException(std::string("Error SDL_Init : ")
 			 + SDL_GetError());
 
-  _window = SDL_SetVideoMode(1024, 980, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+  _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
   SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
@@ -70,7 +70,7 @@ void SDLGraphic::drawSquare(int const &x, int const &y, ElementType type)
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
-  // SDL_Flip(_window);
+  SDL_Flip(_window);
 }
 
 extern "C"

@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sat Mar 28 19:55:05 2015 Jonathan Quach
+// Last update Sun Mar 29 16:09:46 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
@@ -61,7 +61,6 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   IGui *(*external_creator)();
   external_creator = reinterpret_cast<IGui* (*)()>(dlsym(_handle,
 							 "create_lib_instance"));
-
   if (external_creator == NULL)
     {
       char *err = dlerror();
@@ -78,10 +77,11 @@ Nibbler::~Nibbler()
 
 void Nibbler::loop()
 {
-  Game _game(_gui, _caseX, _caseY);
   Event _ev;
 
   _gui->createWindow(_winX, _winY);
+
+  Game _game(_gui, _caseX, _caseY);
   while (_loop)
     {
       // _game->startGame();
