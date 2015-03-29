@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 14:46:15 2015 Jonathan Quach
-// Last update Thu Mar 26 21:57:32 2015 Jonathan Quach
+// Last update Sun Mar 29 18:09:38 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _NIBBLER_HPP_
@@ -28,13 +28,15 @@ private:
   int	_caseX;
   int	_caseY;
   void	*_handle;
-  IGui  *_gui;
+  IGui	*_gui;
   bool	_loop;
   // Map	*_map;
 
 public:
   Nibbler(const std::vector<std::string> &argv);
   ~Nibbler();
+  Nibbler(Nibbler const &);
+  Nibbler &operator=(Nibbler const &);
 
   void loop();
   void *getHandler() const;

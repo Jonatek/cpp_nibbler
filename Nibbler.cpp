@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sun Mar 29 16:09:46 2015 Jonathan Quach
+// Last update Sun Mar 29 18:20:14 2015 Jean-Paul SAYSANA
 //
 
 #include <dlfcn.h>
@@ -73,6 +73,32 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
 Nibbler::~Nibbler()
 {
 
+}
+
+Nibbler::Nibbler(Nibbler const &other)
+{
+  this->_winX = other._winX;
+  this->_winY = other._winY;
+  this->_caseX = other._caseX;
+  this->_caseY = other._caseY;
+  this->_handle = other._handle;
+  this->_gui = other._gui;
+  this->_loop = other._loop;
+}
+
+Nibbler		&Nibbler::operator=(Nibbler const &other)
+{
+  if (this != &other)
+    {
+      this->_winX = other._winX;
+      this->_winY = other._winY;
+      this->_caseX = other._caseX;
+      this->_caseY = other._caseY;
+      this->_handle = other._handle;
+      this->_gui = other._gui;
+      this->_loop = other._loop;
+    }
+  return (*this);
 }
 
 void Nibbler::loop()
