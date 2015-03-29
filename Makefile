@@ -5,7 +5,7 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Sun Mar 29 16:28:51 2015 Jonathan Quach
+## Last update Sun Mar 29 18:23:32 2015 Jean-Paul SAYSANA
 ##
 
 CORE		= 	nibbler
@@ -38,20 +38,20 @@ SHARED		=	-shared
 
 RM		= 	rm -f
 
-all:		$(CORE) $(SDL)
+all		:	$(CORE) $(SDL)
 
-$(CORE): 	$(CORE_OBJ)
-	 	$(CPP) -o $(CORE) $(CORE_OBJ) -ldl -g3
+$(CORE)		: 	$(CORE_OBJ)
+	 		$(CPP) -o $(CORE) $(CORE_OBJ) -ldl -g3
 
-$(SDL):		$(SDL_OBJ)
-		$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED)
+$(SDL)		:	$(SDL_OBJ)
+			$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED)
 
-clean:
-		$(RM) $(CORE_OBJ) $(SDL_OBJ)
+clean		:
+			$(RM) $(CORE_OBJ) $(SDL_OBJ)
 
-fclean: 	clean
-		$(RM) $(CORE) $(SDL)
+fclean		: 	clean
+			$(RM) $(CORE) $(SDL)
 
-re: 		fclean all
+re		: 	fclean all
 
-.PHONY: 	all clean fclean re
+.PHONY		: 	all clean fclean re
