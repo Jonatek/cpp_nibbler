@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 10:13:04 2015 Jonathan Quach
-// Last update Thu Mar 26 23:49:56 2015 Jonathan Quach
+// Last update Sat Mar 28 16:48:15 2015 Jonathan Quach
 //
 
 #include "Nibbler.hpp"
@@ -23,7 +23,7 @@ int		main(int ac, char **av)
       Nibbler *nib = new Nibbler(argv);
       nib->loop();
 
-      // dlclose(nib->getHandler());
+      dlclose(nib->getHandler());
     }
   catch (std::exception const &e)
     {

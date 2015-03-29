@@ -5,12 +5,14 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Thu Mar 26 23:53:34 2015 Jonathan Quach
+## Last update Sun Mar 29 15:28:55 2015 Jonathan Quach
 ##
 
 CORE		= 	nibbler
 
-CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
+#CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
+
+CPPFLAGS	+=	-fPIC
 
 CPP		= 	g++
 
@@ -18,12 +20,15 @@ CORE_SRC	= 	main.cpp \
 			ErrorException.cpp \
 			Nibbler.cpp \
 			Event.cpp \
+			Game.cpp \
+			Position.cpp \
+			Snake.cpp \
 
 CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)
 
 SDL		=	lib_nibbler_sdl.so
 
-SDLFLAGS	=	-lSDL2
+SDLFLAGS	=	-lSDL
 
 SDL_SRC		=	SDLGraphic.cpp \
 			ErrorException.cpp \
