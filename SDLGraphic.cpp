@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Mar 29 16:02:16 2015 Jonathan Quach
+// Last update Sun Mar 29 16:28:39 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -13,6 +13,9 @@
 
 SDLGraphic::SDLGraphic()
 {
+  if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    throw ErrorException(std::string("Error SDL_Init : ")
+			 + SDL_GetError());
 }
 
 SDLGraphic::~SDLGraphic()
@@ -32,10 +35,6 @@ void SDLGraphic::createWindow(int const &x, int const &y)
   // 				      SDL_WINDOW_SHOWN)) == NULL)
   //   throw ErrorException(std::string("Error SDL_CreateWindow : ")
   // 			 + SDL_GetError());
-
-  if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    throw ErrorException(std::string("Error SDL_Init : ")
-			 + SDL_GetError());
 
   _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
@@ -60,8 +59,6 @@ void SDLGraphic::drawSquare(int const &x, int const &y, ElementType type)
 
   pos.x = x * 20;
   pos.y = y * 20;
-  // pos.h = x * 20;
-  // pos.w = y * 20;
 
   std::cout << pos.x << " " << pos.y << std::endl;
   if (type == BODY)
