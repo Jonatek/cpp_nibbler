@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Sun Mar 29 15:59:47 2015 Jonathan Quach
+// Last update Sun Mar 29 19:39:35 2015 Jonathan Quach
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -21,9 +21,9 @@ class SDLGraphic : public IGui
 {
 private:
   SDL_Surface *_window;
-  // SDL_Surface *_backgroundTexture;
+  SDL_Surface *_backgroundTexture;
   SDL_Surface *_snakeTexture;
-  // SDL_Surface *_foodTexture;
+  SDL_Surface *_foodTexture;
 
 public:
   SDLGraphic();
@@ -32,6 +32,7 @@ public:
   virtual void createWindow(int const &x, int const &y);
   virtual void updateEvent(Event &);
   virtual void drawSquare(int const &x, int const &y, ElementType);
+  virtual void removeSquare(int const &x, int const &y);
 };
 
 extern "C"

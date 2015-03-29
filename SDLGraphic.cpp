@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Mar 29 16:28:39 2015 Jonathan Quach
+// Last update Sun Mar 29 20:12:55 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -38,6 +38,7 @@ void SDLGraphic::createWindow(int const &x, int const &y)
 
   _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
+  _backgroundTexture = SDL_LoadBMP("./background.bmp");
   SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
 }
@@ -46,10 +47,38 @@ void SDLGraphic::updateEvent(Event &_newEvent)
 {
   SDL_Event event;
 
-  while (SDL_PollEvent(&event))
+  SDL_PollEvent(&event);
+  // while ()
+  //   {
+  switch (event.type)
     {
-      if (event.key.keysym.sym == SDLK_ESCAPE)
-        _newEvent.setEventType(QUIT);
+    case SDL_KEYDOWN:
+      {
+	if (event.key.keysym.sym == SDLK_ESCAPE)
+	  _newEvent.setEventType(QUIT);
+	if (event.key.keysym.sym == SDLK_LEFT)
+	  {
+	    if (_newEvent.getEventType() == RIGHT)
+	      _newEvent.setEventType(UP);
+	    else if (_newEvent.getEventType() == DOWN)
+	      _newEvent.setEventType(RIGHT);
+	    else if (_newEvent.getEventType() == LEFT)
+	      _newEvent.setEventType(DOWN);
+	    else if (_newEvent.getEventType() == UP)
+	      _newEvent.setEventType(LEFT);
+	  }
+	if (event.key.keysym.sym == SDLK_RIGHT)
+	  {
+	    if (_newEvent.getEventType() == RIGHT)
+	      _newEvent.setEventType(DOWN);
+	    else if (_newEvent.getEventType() == DOWN)
+	      _newEvent.setEventType(LEFT);
+	    else if (_newEvent.getEventType() == LEFT)
+	      _newEvent.setEventType(UP);
+	    else if (_newEvent.getEventType() == UP)
+	      _newEvent.setEventType(RIGHT);
+	  }
+      }
     }
 }
 
@@ -67,6 +96,17 @@ void SDLGraphic::drawSquare(int const &x, int const &y, ElementType type)
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
+  SDL_Flip(_window);
+}
+
+void SDLGraphic::removeSquare(int const &x, int const &y)
+{
+  SDL_Rect pos;
+
+  pos.x = x * 20;
+  pos.y = y * 20;
+
+  SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
   SDL_Flip(_window);
 }
 

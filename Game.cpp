@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Sat Mar 28 16:55:11 2015 Jonathan Quach
-// Last update Sat Mar 28 19:57:09 2015 Jonathan Quach
+// Last update Sun Mar 29 19:14:34 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
@@ -20,6 +20,15 @@ Game::Game(IGui *gui, int const &width, int const &height) :
 Game::~Game()
 {
 
+}
+
+void Game::makeSnakeMove(Event const &e)
+{
+  if (e.getEventType() == LEFT)
+    _snake.moveLeft();
+  if (e.getEventType() == RIGHT)
+    _snake.moveRight();
+  _snake.move();
 }
 
 void Game::startGame()

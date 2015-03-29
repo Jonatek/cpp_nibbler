@@ -1,11 +1,11 @@
 //
 // Event.cpp for  in /home/quach_a/Lab/cpp_nibbler
-// 
+//
 // Made by Jonathan Quach
 // Login  <jonathan.quach@epitech.eu>
-// 
+//
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Thu Mar 26 20:01:50 2015 Jonathan Quach
+// Last update Sun Mar 29 16:43:59 2015 Jonathan Quach
 //
 
 #include "Event.hpp"

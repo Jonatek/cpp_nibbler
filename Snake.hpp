@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sat Mar 28 19:59:15 2015 Jonathan Quach
+// Last update Sun Mar 29 19:16:41 2015 Jonathan Quach
 //
 
 #ifndef		SNAKE_HPP_
@@ -42,10 +42,11 @@ public:
   /*		MOVE		*/
   /******************************/
 
-  void		moveUp();
-  void		moveDown();
+  // void		moveUp(Event const &);
+  // void		moveDown(Event const &);
   void		moveLeft();
   void		moveRight();
+  void		move();
 };
 
 #endif	/*	!SNAKE_HPP_	*/

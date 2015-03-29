@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Sat Mar 28 16:57:40 2015 Jonathan Quach
-// Last update Sat Mar 28 19:55:56 2015 Jonathan Quach
+// Last update Sun Mar 29 18:58:29 2015 Jonathan Quach
 //
 
 #ifndef _GAME_HPP_
@@ -28,6 +28,7 @@ public:
   Game(IGui *, int const &, int const &);
   ~Game();
 
+  void makeSnakeMove(Event const &);
   void startGame();
 };
 

@@ -5,10 +5,11 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sun Mar 29 18:20:14 2015 Jean-Paul SAYSANA
+// Last update Sun Mar 29 19:58:06 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
+#include <unistd.h>
 #include "Nibbler.hpp"
 #include "ErrorException.hpp"
 #include "IGui.hpp"
@@ -108,12 +109,15 @@ void Nibbler::loop()
   _gui->createWindow(_winX, _winY);
 
   Game _game(_gui, _caseX, _caseY);
+
   while (_loop)
     {
       // _game->startGame();
       _gui->updateEvent(_ev);
       if (_ev.getEventType() == QUIT)
 	_loop = false;
+      _game.makeSnakeMove(_ev);
+      usleep(90000);
     }
 }
 
