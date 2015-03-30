@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Thu Mar 26 19:40:57 2015 Jonathan Quach
-// Last update Mon Mar 30 17:14:57 2015 Daniel Han
+// Last update Mon Mar 30 17:55:02 2015 Daniel Han
 //
 
 #ifndef _EVENT_HPP
@@ -42,6 +42,8 @@ public:
 
 private:
   EventType _event;
+  EventType _old;
+
 };
 
 #endif
