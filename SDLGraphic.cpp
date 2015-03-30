@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Mon Mar 30 16:46:13 2015 Daniel Han
+// Last update Mon Mar 30 17:49:28 2015 Daniel Han
 //
 
 #include <iostream>
@@ -48,8 +48,6 @@ void SDLGraphic::updateEvent(Event &_newEvent)
   SDL_Event event;
 
   SDL_PollEvent(&event);
-  // while ()
-  //   {
   switch (event.type)
     {
     case SDL_KEYDOWN:
@@ -57,27 +55,9 @@ void SDLGraphic::updateEvent(Event &_newEvent)
 	if (event.key.keysym.sym == SDLK_ESCAPE)
 	  _newEvent.setEventType(QUIT);
 	if (event.key.keysym.sym == SDLK_LEFT)
-	  {
-	    if (_newEvent.getEventType() == RIGHT)
-	      _newEvent.setEventType(UP);
-	    else if (_newEvent.getEventType() == DOWN)
-	      _newEvent.setEventType(RIGHT);
-	    else if (_newEvent.getEventType() == LEFT)
-	      _newEvent.setEventType(DOWN);
-	    else if (_newEvent.getEventType() == UP)
-	      _newEvent.setEventType(LEFT);
-	  }
+	  _newEvent.setEventType(LEFT);
 	if (event.key.keysym.sym == SDLK_RIGHT)
-	  {
-	    if (_newEvent.getEventType() == RIGHT)
-	      _newEvent.setEventType(DOWN);
-	    else if (_newEvent.getEventType() == DOWN)
-	      _newEvent.setEventType(LEFT);
-	    else if (_newEvent.getEventType() == LEFT)
-	      _newEvent.setEventType(UP);
-	    else if (_newEvent.getEventType() == UP)
-	      _newEvent.setEventType(RIGHT);
-	  }
+	  _newEvent.setEventType(RIGHT);
       }
     }
 }
