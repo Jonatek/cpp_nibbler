@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sun Mar 29 19:58:06 2015 Jonathan Quach
+// Last update Mon Mar 30 17:11:09 2015 Daniel Han
 //
 
 #include <dlfcn.h>
@@ -14,7 +14,6 @@
 #include "ErrorException.hpp"
 #include "IGui.hpp"
 #include "Event.hpp"
-#include "Game.hpp"
 
 Nibbler::Nibbler(const std::vector<std::string> &argv)
   : _winX(1024), _winY(980), _loop(true)
@@ -108,7 +107,7 @@ void Nibbler::loop()
 
   _gui->createWindow(_winX, _winY);
 
-  Game _game(_gui, _caseX, _caseY);
+  // Game _game(_gui, _caseX, _caseY);
 
   while (_loop)
     {
@@ -116,7 +115,7 @@ void Nibbler::loop()
       _gui->updateEvent(_ev);
       if (_ev.getEventType() == QUIT)
 	_loop = false;
-      _game.makeSnakeMove(_ev);
+      // _game.makeSnakeMove(_ev);
       usleep(90000);
     }
 }
