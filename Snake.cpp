@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 17:14:20 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 31 17:25:51 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -66,6 +66,12 @@ void		Snake::moveRight()
   std::cout << "right" << std::endl;
 }
 
+void		Snake::checkWall()
+{
+  if ((body.begin())->getX() == 0)
+    std::cout << "dead " << std::endl;
+}
+
 void		Snake::move(EventType const direction)
 {
   Position head(0, 0);
@@ -86,22 +92,24 @@ void		Snake::move(EventType const direction)
   body.pop_back();
   body.push_front(head);
 
+  checkWall();
   gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
-    // switch (direction)
-    //   {
-    //   case RIGHT:
-    //     head = _snake.begin() + Coord(1, 0);
-    //     break;
-    // case UP:
-    //   newHead = *(_snake.begin()) + Coord(0, -1);
-    //   break;
-    // case DOWN:
-    //   newHead = *(_snake.begin()) + Coord(0, 1);
-    //   break;
-    // case LEFT:
-    //   newHead = *(_snake.begin()) + Coord(-1, 0);
-    //   break;
-    // default:
-    //   newHead = *(_snake.begin());
-    // }
+
+  // switch (direction)
+  //   {
+  //   case RIGHT:
+  //     head = _snake.begin() + Coord(1, 0);
+  //     break;
+  // case UP:
+  //   newHead = *(_snake.begin()) + Coord(0, -1);
+  //   break;
+  // case DOWN:
+  //   newHead = *(_snake.begin()) + Coord(0, 1);
+  //   break;
+  // case LEFT:
+  //   newHead = *(_snake.begin()) + Coord(-1, 0);
+  //   break;
+  // default:
+  //   newHead = *(_snake.begin());
+  // }
 }

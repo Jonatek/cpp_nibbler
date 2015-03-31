@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 17:13:44 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 31 17:18:20 2015 Jean-Paul SAYSANA
 //
 
 #ifndef		SNAKE_HPP_
@@ -47,6 +47,8 @@ public:
   void		moveLeft();
   void		moveRight();
   void		move(EventType);
+  void	        checkWall();
+
 };
 
 #endif	/*	!SNAKE_HPP_	*/
