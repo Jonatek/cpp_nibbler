@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Mon Mar 30 17:21:55 2015 Jonathan Quach
+// Last update Tue Mar 31 17:14:02 2015 Jean-Paul SAYSANA
 //
 
 #include <dlfcn.h>
@@ -109,7 +109,7 @@ void Nibbler::loop()
   _gui->createWindow(_winX, _winY);
 
   // Game _game(_gui, _caseX, _caseY);
-  Snake _game(_caseX, _caseY, _gui);
+  Snake		_game(_caseX, _caseY, _gui);
 
   while (_loop)
     {
@@ -117,8 +117,8 @@ void Nibbler::loop()
       _gui->updateEvent(_ev);
       if (_ev.getEventType() == QUIT)
 	_loop = false;
-      // _game.makeSnakeMove(_ev);
-      usleep(90000);
+      _game.move(_ev.getEventType());
+      usleep(50000);
     }
 }
 

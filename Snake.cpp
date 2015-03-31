@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sun Mar 29 20:14:23 2015 Jonathan Quach
+// Last update Tue Mar 31 17:14:20 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -66,7 +66,7 @@ void		Snake::moveRight()
   std::cout << "right" << std::endl;
 }
 
-void		Snake::move()
+void		Snake::move(EventType const direction)
 {
   Position head(0, 0);
 
