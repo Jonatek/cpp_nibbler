@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 17:25:51 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 31 18:33:11 2015 Daniel Han
 //
 
 #include <iostream>
@@ -72,7 +72,7 @@ void		Snake::checkWall()
     std::cout << "dead " << std::endl;
 }
 
-void		Snake::move(EventType const direction)
+void		Snake::move(EventType direction)
 {
   Position head(0, 0);
 

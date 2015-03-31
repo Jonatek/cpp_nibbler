@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Mon Mar 30 17:49:28 2015 Daniel Han
+// Last update Tue Mar 31 18:43:11 2015 Daniel Han
 //
 
 #include <iostream>
@@ -52,6 +52,8 @@ void SDLGraphic::updateEvent(Event &_newEvent)
     {
     case SDL_KEYDOWN:
       {
+	if (event.key.keysym.sym == SDLK_RETURN)
+	  _newEvent.setEventType(ENTER);
 	if (event.key.keysym.sym == SDLK_ESCAPE)
 	  _newEvent.setEventType(QUIT);
 	if (event.key.keysym.sym == SDLK_LEFT)
