@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Sat Mar 28 18:52:57 2015 Jonathan Quach
-// Last update Sun Mar 29 19:23:47 2015 Jonathan Quach
+// Last update Tue Mar 31 18:56:03 2015 Daniel Han
 //
 
 #ifndef _POSITION_HPP_
@@ -18,16 +18,19 @@ private:
   int y;
 
 public:
-  Position(int const &, int const &);
+  Position();
+  Position(int, int);
   Position(Position const &);
   ~Position();
-  Position &operator=(Position const&);
-  Position &operator+(Position const&);
+  Position & operator=(Position const &);
 
   int getX() const;
   int getY() const;
-  void setX(int const &);
-  void setY(int const &);
+  void setX(int);
+  void setY(int);
+
+  Position & operator+(Position const &);
+
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Tue Mar 31 18:43:11 2015 Daniel Han
+// Last update Tue Mar 31 18:57:09 2015 Daniel Han
 //
 
 #include <iostream>
@@ -23,7 +23,7 @@ SDLGraphic::~SDLGraphic()
   SDL_Quit();
 }
 
-void SDLGraphic::createWindow(int const &x, int const &y)
+void SDLGraphic::createWindow(int x, int y)
 {
   // std::string err;
 
@@ -64,7 +64,7 @@ void SDLGraphic::updateEvent(Event &_newEvent)
     }
 }
 
-void SDLGraphic::drawSquare(int const &x, int const &y, ElementType type)
+void SDLGraphic::drawSquare(int x, int y, ElementType type)
 {
   SDL_Rect pos;
 
@@ -81,7 +81,7 @@ void SDLGraphic::drawSquare(int const &x, int const &y, ElementType type)
   SDL_Flip(_window);
 }
 
-void SDLGraphic::removeSquare(int const &x, int const &y)
+void SDLGraphic::removeSquare(int x, int y)
 {
   SDL_Rect pos;
 

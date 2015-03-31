@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Sun Mar 29 19:39:35 2015 Jonathan Quach
+// Last update Tue Mar 31 18:57:29 2015 Daniel Han
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -29,10 +29,10 @@ public:
   SDLGraphic();
   virtual ~SDLGraphic();
 
-  virtual void createWindow(int const &x, int const &y);
+  virtual void createWindow(int, int);
   virtual void updateEvent(Event &);
-  virtual void drawSquare(int const &x, int const &y, ElementType);
-  virtual void removeSquare(int const &x, int const &y);
+  virtual void drawSquare(int, int, ElementType);
+  virtual void removeSquare(int, int);
 };
 
 extern "C"

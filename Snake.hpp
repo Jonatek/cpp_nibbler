@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 17:18:20 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 31 18:58:04 2015 Daniel Han
 //
 
 #ifndef		SNAKE_HPP_
@@ -27,7 +27,7 @@ private:
   std::list<Position> body;
 
 public:
-  Snake(int const &, int const &, IGui *);
+  Snake(int, int, IGui *);
   ~Snake() {};
   Snake(Snake const &);
   Snake &operator=(Snake const &);
@@ -42,8 +42,6 @@ public:
   /*		MOVE		*/
   /******************************/
 
-  // void		moveUp(Event const &);
-  // void		moveDown(Event const &);
   void		moveLeft();
   void		moveRight();
   void		move(EventType);

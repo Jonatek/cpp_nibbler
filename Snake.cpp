@@ -5,13 +5,13 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 18:33:11 2015 Daniel Han
+// Last update Tue Mar 31 18:57:56 2015 Daniel Han
 //
 
 #include <iostream>
 #include "Snake.hpp"
 
-Snake::Snake(int const &_x, int const &_y, IGui *_gui)
+Snake::Snake(int _x, int _y, IGui *_gui)
   : x(_x), y(_y), direction(RIGHT), snakeSize(4), gui(_gui)
 {
   body.push_back(Position(x / 2 , y / 2));
@@ -74,7 +74,7 @@ void		Snake::checkWall()
 
 void		Snake::move(EventType direction)
 {
-  Position head(0, 0);
+  Position head;
 
   if (direction == RIGHT)
     head = *(body.begin()) + Position(1, 0);
