@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Mon Mar 30 17:57:42 2015 Daniel Han
+// Last update Mon Mar 30 22:02:55 2015 Daniel Han
 //
 
 #include <iostream>
@@ -24,6 +24,12 @@ Event::~Event()
 EventType Event::getEventType() const
 {
   return _event;
+}
+
+void Event::snakeStartMoving(const EventType & input)
+{
+  if (input != ENTER)
+    this->_event = RIGHT;
 }
 
 void Event::setNewDirection(const EventType & direction)
@@ -57,6 +63,8 @@ void Event::setEventType(const EventType & type)
 {
   if (this->_event == NONE)
     this->_event = type;
+  // replace with line below if Enter is used to start the game
+  // snakeStartMoving(type)
   else if (type == LEFT || type == RIGHT)
     setNewDirection(type);
   else if (type == PAUSE)
