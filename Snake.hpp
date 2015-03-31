@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 18:58:04 2015 Daniel Han
+// Last update Tue Mar 31 19:13:53 2015 Daniel Han
 //
 
 #ifndef		SNAKE_HPP_

@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 18:57:56 2015 Daniel Han
+// Last update Tue Mar 31 19:19:27 2015 Daniel Han
 //
 
 #include <iostream>
@@ -29,16 +29,6 @@ void		Snake::growUp()
 {
   this->snakeSize += 1;
 }
-
-// void		Snake::moveUp(Event const &e)
-// {
-//   this->direction = UP;
-// }
-
-// void		Snake::moveDown(Event const &e)
-// {
-//   this->direction = DOWN;
-// }
 
 void		Snake::moveLeft()
 {

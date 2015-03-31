@@ -5,23 +5,23 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Sat Mar 28 18:48:44 2015 Jonathan Quach
-// Last update Tue Mar 31 18:54:40 2015 Daniel Han
+// Last update Tue Mar 31 19:45:05 2015 Daniel Han
 //
 
 #include "Position.hpp"
 
 Position::Position() :
-  x(0), y(0)
+  _x(0), _y(0)
 {
 }
 
-Position::Position(int _x, int _y) :
-  x(_x), y(_y)
+Position::Position(int x, int y) :
+  _x(_x), _y(_y)
 {
 }
 
 Position::Position(Position const & other) :
-  x(other.x), y(other.y)
+  _x(getX()), _y(getY())
 {
 }
 
@@ -33,34 +33,34 @@ Position & Position::operator=(Position const & other)
 {
   if (this != &other)
     {
-      x = other.x;
-      y = other.y;
+      this->_x = other._x;
+      this->_y = other._y;
     }
   return *this;
 }
 
 int Position::getX() const
 {
-  return x;
+  return this->_x;
 }
 
 int Position::getY() const
 {
-  return y;
+  return this->_y;
 }
 
-void Position::setX(int _x)
+void Position::setX(int x)
 {
-  x = _x;
+  this->_x = x;
 }
 
-void Position::setY(int _y)
+void Position::setY(int y)
 {
-  y = _y;
+  this->_y = y;
 }
 
 Position & Position::operator+(Position const & other)
 {
-  Position *res = new Position(this->x + other.getX(), this->y + other.getY());
+  Position *res = new Position(getX() + other.getX(), getY() + other.getY());
   return *res;
 }

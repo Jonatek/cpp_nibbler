@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 14:46:15 2015 Jonathan Quach
-// Last update Tue Mar 31 16:44:37 2015 Jean-Paul SAYSANA
+// Last update Tue Mar 31 19:24:53 2015 Daniel Han
 //
 
 #ifndef _NIBBLER_HPP_
@@ -38,7 +38,7 @@ public:
   Nibbler(Nibbler const &);
   Nibbler &operator=(Nibbler const &);
 
-  void loop();
+  void loop() const;
   void *getHandler() const;
 };
 

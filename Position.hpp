@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Sat Mar 28 18:52:57 2015 Jonathan Quach
-// Last update Tue Mar 31 18:56:03 2015 Daniel Han
+// Last update Tue Mar 31 19:37:06 2015 Daniel Han
 //
 
 #ifndef _POSITION_HPP_
@@ -14,8 +14,8 @@
 class Position
 {
 private:
-  int x;
-  int y;
+  int _x;
+  int _y;
 
 public:
   Position();
