@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Wed Apr  1 15:19:16 2015 Jonathan Quach
+// Last update Wed Apr  1 20:18:45 2015 Daniel Han
 //
 
 #include <dlfcn.h>
@@ -15,6 +15,7 @@
 #include "IGui.hpp"
 #include "Event.hpp"
 #include "Snake.hpp"
+#include "Map.hpp"
 
 Nibbler::Nibbler(const std::vector<std::string> &argv)
   : _winX(1024), _winY(980), _loop(true)
@@ -110,6 +111,7 @@ void Nibbler::loop()
 
   // Game _game(_gui, _caseX, _caseY);
   Snake		_game(_caseX, _caseY, _gui);
+  Map		_map(_caseX, _caseY);
 
   while (_loop)
     {
