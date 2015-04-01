@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Tue Mar 31 19:24:45 2015 Daniel Han
+// Last update Wed Apr  1 15:17:05 2015 Daniel Han
 //
 
 #include <dlfcn.h>
@@ -102,7 +102,7 @@ Nibbler		&Nibbler::operator=(Nibbler const &other)
   return (*this);
 }
 
-void Nibbler::loop() const
+void Nibbler::loop()
 {
   Event _ev;
 
