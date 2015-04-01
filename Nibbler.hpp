@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 14:46:15 2015 Jonathan Quach
-// Last update Wed Apr  1 10:15:22 2015 Jean-Paul SAYSANA
+// Last update Wed Apr  1 13:37:00 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _NIBBLER_HPP_

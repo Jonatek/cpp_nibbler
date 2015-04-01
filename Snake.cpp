@@ -5,14 +5,14 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Wed Apr  1 13:00:07 2015 Jean-Paul SAYSANA
+// Last update Wed Apr  1 13:42:57 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
 #include "Snake.hpp"
 
-Snake::Snake(int _x, int _y, int _winX, int _winY, IGui *_gui)
-  : x(_x), y(_y), winX(_winX), winY(_winY), direction(RIGHT), snakeSize(4), gui(_gui)
+Snake::Snake(int _x, int _y, IGui *_gui)
+  : x(_x), y(_y), direction(RIGHT), snakeSize(4), gui(_gui)
 {
   body.push_back(Position(x / 2 , y / 2));
   body.push_back(Position(x / 2 - 1, y / 2));
@@ -58,10 +58,11 @@ void		Snake::moveRight()
 
 int		Snake::checkWall()
 {
+  std::cout << "BODY GETX = " << body.begin()->getX() << std::endl;
   if ((body.begin())->getX() == 0 ||
       (body.begin())->getY() == 0 ||
-      (body.begin())->getX() == winX ||
-      (body.begin())->getY() == winY)
+      (body.begin())->getX() == 1024 / x ||
+      (body.begin())->getY() == y)
     return (1);
   return (0);
 }
