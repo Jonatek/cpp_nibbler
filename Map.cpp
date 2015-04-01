@@ -65,7 +65,7 @@ bool Map::addObject(int x, int y, ObjectType object)
 {
   int	pos = y * this->_caseX + x;
 
-  if (this->_objects[pos] = NONE)
+  if (this->_objects[pos] == NONE)
     {
       this->_objects[pos] = object;
       return true;
