@@ -5,14 +5,14 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 19:19:27 2015 Daniel Han
+// Last update Wed Apr  1 10:32:33 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
 #include "Snake.hpp"
 
-Snake::Snake(int _x, int _y, IGui *_gui)
-  : x(_x), y(_y), direction(RIGHT), snakeSize(4), gui(_gui)
+Snake::Snake(int _x, int _y, int _winX, int _winY, IGui *_gui)
+  : x(_x), y(_y), winX(_winX), winY(_winY), direction(RIGHT), snakeSize(4), gui(_gui)
 {
   body.push_back(Position(x / 2 , y / 2));
   body.push_back(Position(x / 2 - 1, y / 2));
@@ -56,13 +56,17 @@ void		Snake::moveRight()
   std::cout << "right" << std::endl;
 }
 
-void		Snake::checkWall()
+int		Snake::checkWall()
 {
-  if ((body.begin())->getX() == 0)
-    std::cout << "dead " << std::endl;
+  if ((body.begin())->getX() == 0 ||
+      (body.begin())->getY() == 0 ||
+      (body.begin())->getX() == winX ||
+      (body.begin())->getY() == winY)
+    return (1);
+  return (0);
 }
 
-void		Snake::move(EventType direction)
+int		Snake::move(EventType direction)
 {
   Position head;
 
@@ -82,7 +86,8 @@ void		Snake::move(EventType direction)
   body.pop_back();
   body.push_front(head);
 
-  checkWall();
+  if (checkWall() == 1)
+    return (1);
   gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
 
   // switch (direction)
@@ -102,4 +107,5 @@ void		Snake::move(EventType direction)
   // default:
   //   newHead = *(_snake.begin());
   // }
+  return (0);
 }

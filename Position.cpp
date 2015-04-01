@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Sat Mar 28 18:48:44 2015 Jonathan Quach
-// Last update Tue Mar 31 19:45:05 2015 Daniel Han
+// Last update Wed Apr  1 01:23:07 2015 Jean-Paul SAYSANA
 //
 
 #include "Position.hpp"
@@ -16,13 +16,15 @@ Position::Position() :
 }
 
 Position::Position(int x, int y) :
-  _x(_x), _y(_y)
+  _x(x), _y(y)
 {
 }
 
 Position::Position(Position const & other) :
   _x(getX()), _y(getY())
 {
+  this->_x = other._x;
+  this->_y = other._y;
 }
 
 Position::~Position()

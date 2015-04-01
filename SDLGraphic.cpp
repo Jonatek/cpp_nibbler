@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Tue Mar 31 18:57:09 2015 Daniel Han
+// Last update Wed Apr  1 10:54:22 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -39,6 +39,7 @@ void SDLGraphic::createWindow(int x, int y)
   _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
   _backgroundTexture = SDL_LoadBMP("./background.bmp");
+  _wallTexture = SDL_LoadBMP("./wall.bmp");
   SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
 }
@@ -78,6 +79,8 @@ void SDLGraphic::drawSquare(int x, int y, ElementType type)
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
+  if (type == WALL)
+    SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
   SDL_Flip(_window);
 }
 
@@ -89,6 +92,32 @@ void SDLGraphic::removeSquare(int x, int y)
   pos.y = y * 20;
 
   SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
+  SDL_Flip(_window);
+}
+
+void		SDLGraphic::makeWall(int x, int y)
+{
+  SDL_Rect	pos;
+
+  pos.x = 0;
+  pos.y = 0;
+  for (pos.x = 0; pos.x < x - 19; ++pos.x)
+    SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+  for (pos.y = 0; pos.y < y - 19; ++pos.y)
+    {
+      SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+      ++pos.y;
+    }
+  pos.x = 0;
+  for (pos.y = 0; pos.y < y - 19; ++pos.y)
+    {
+      SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+      ++pos.y;
+    }
+  for (pos.x = 0; pos.x < x; ++pos.x)
+    {
+      SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+    }
   SDL_Flip(_window);
 }
 

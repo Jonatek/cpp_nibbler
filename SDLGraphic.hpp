@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Tue Mar 31 18:57:29 2015 Daniel Han
+// Last update Wed Apr  1 10:28:31 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -24,6 +24,7 @@ private:
   SDL_Surface *_backgroundTexture;
   SDL_Surface *_snakeTexture;
   SDL_Surface *_foodTexture;
+  SDL_Surface *_wallTexture;
 
 public:
   SDLGraphic();
@@ -33,6 +34,7 @@ public:
   virtual void updateEvent(Event &);
   virtual void drawSquare(int, int, ElementType);
   virtual void removeSquare(int, int);
+  virtual void makeWall(int, int);
 };
 
 extern "C"

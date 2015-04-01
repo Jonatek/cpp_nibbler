@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Tue Mar 31 18:42:16 2015 Daniel Han
+// Last update Wed Apr  1 01:54:47 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -59,29 +59,29 @@ void Event::setNewDirection(EventType direction)
       else if (this->_event == DOWN)
 	this->_event = LEFT;
     }
-
 }
 
 void Event::setEventType(EventType type)
 {
   if (this->_event == NONE)
     snakeStartMoving(type);
-  else if (type == LEFT || type == RIGHT)
-    setNewDirection(type);
-  else if (type == PAUSE)
-    {
-      if (this->_event != PAUSE)
-	{
-	  this->_old = this->_event;
-	  this->_event = PAUSE;
-	}
-      else
-	this->_event = _old;
-    }
-  else
-    {
-      std::cout << "this is the else" << std::endl;
-      this->_event = type;
-    }
+  else 
+    if (type == LEFT || type == RIGHT)
+      setNewDirection(type);
+    else if (type == PAUSE)
+      {
+	if (this->_event != PAUSE)
+	  {
+	    this->_old = this->_event;
+	    this->_event = PAUSE;
+	  }
+	else
+	  this->_event = _old;
+      }
+    else
+      {
+	std::cout << "this is the else" << std::endl;
+	this->_event = type;
+      }
   std::cout << "event updated with " << this->_event << std::endl;
 }

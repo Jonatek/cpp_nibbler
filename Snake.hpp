@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Tue Mar 31 19:13:53 2015 Daniel Han
+// Last update Wed Apr  1 10:09:36 2015 Jean-Paul SAYSANA
 //
 
 #ifndef		SNAKE_HPP_
@@ -21,13 +21,15 @@ class		Snake
 private:
   int		x;
   int		y;
+  int		winX;
+  int		winY;
   EventType     direction;
   int		snakeSize;
   IGui		*gui;
   std::list<Position> body;
 
 public:
-  Snake(int, int, IGui *);
+  Snake(int, int, int, int, IGui *);
   ~Snake() {};
   Snake(Snake const &);
   Snake &operator=(Snake const &);
@@ -44,8 +46,8 @@ public:
 
   void		moveLeft();
   void		moveRight();
-  void		move(EventType);
-  void	        checkWall();
+  int		move(EventType);
+  int		checkWall();
 
 };
 
