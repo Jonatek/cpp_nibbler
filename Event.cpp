@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Tue Mar 31 18:42:16 2015 Daniel Han
+// Last update Thu Apr  2 15:18:35 2015 Daniel Han
 //
 
 #include <iostream>
@@ -79,9 +79,6 @@ void Event::setEventType(EventType type)
 	this->_event = _old;
     }
   else
-    {
-      std::cout << "this is the else" << std::endl;
-      this->_event = type;
-    }
+    this->_event = type;
   std::cout << "event updated with " << this->_event << std::endl;
 }
