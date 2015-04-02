@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 14:46:15 2015 Jonathan Quach
-// Last update Thu Apr  2 15:15:34 2015 Daniel Han
+// Last update Thu Apr  2 19:31:18 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _NIBBLER_HPP_
@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include "IGui.hpp"
+#include "Map.hpp"
 
 class Nibbler
 {
@@ -30,7 +31,12 @@ private:
   void	*_handle;
   IGui	*_gui;
   bool	_loop;
+  void	loop();
   // Map	*_map;
+
+  /*
+    Taille du taleeau =  caseX * caseY
+   */
 
 public:
   Nibbler(const std::vector<std::string> &argv);
@@ -38,8 +44,8 @@ public:
   Nibbler(Nibbler const &);
   Nibbler &operator=(Nibbler const &);
 
-  void loop();
-  void *getHandler() const;
+  void	launchGame();
+  void	*getHandler() const;
 };
 
 #endif

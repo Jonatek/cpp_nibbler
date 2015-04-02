@@ -5,17 +5,17 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Wed Apr  1 20:18:45 2015 Daniel Han
+// Last update Thu Apr  2 19:47:18 2015 Jean-Paul SAYSANA
 //
 
 #include <dlfcn.h>
-#include <unistd.h>
 #include "Nibbler.hpp"
 #include "ErrorException.hpp"
 #include "IGui.hpp"
 #include "Event.hpp"
 #include "Snake.hpp"
 #include "Map.hpp"
+#include "Game.hpp"
 
 Nibbler::Nibbler(const std::vector<std::string> &argv)
   : _winX(1024), _winY(980), _loop(true)
@@ -42,7 +42,6 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   ss.clear();
   ss.str(argv[3]);
   ss >> libName;
-
   // void *dlopen(const char *filename, int flag)
   // dlopen loads the dynamic library file, and return an "opaque" handle
   // RTDL_LAZY -> lazy binding. Only resolve symbols as the code it need it is exec
@@ -103,28 +102,42 @@ Nibbler		&Nibbler::operator=(Nibbler const &other)
   return (*this);
 }
 
-void Nibbler::loop()
+void	Nibbler::loop()
 {
   Event _ev;
 
   _gui->createWindow(_winX, _winY);
-
   // Game _game(_gui, _caseX, _caseY);
-  Snake		_game(_caseX, _caseY, _gui);
+    
+  Snake         _game(_caseX, _caseY, _gui);
   Map		_map(_caseX, _caseY);
 
   while (_loop)
     {
       // _game->startGame();
+
       _gui->updateEvent(_ev);
       if (_ev.getEventType() == QUIT)
-	_loop = false;
+        _loop = false;
       _game.move(_ev.getEventType());
       usleep(50000);
     }
 }
 
-void *Nibbler::getHandler() const
+
+/**
+   afficher la map entiere
+   je balance la map en param
+   
+ **/
+
+void		Nibbler::launchGame()
+{
+  //loop();
+  Game		game(_winX, _winY, _caseX, _caseY, _gui);
+}
+
+void		*Nibbler::getHandler() const
 {
   return _handle;
 }
