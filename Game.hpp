@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 17:44:47 2015 Jonathan Quach
+// Last update Fri Apr  3 19:05:02 2015 Daniel Han
 //
 
 #ifndef GAME_HPP_
@@ -42,7 +42,7 @@ public:
   Game & operator=(Game const &);
   ~Game();
 
-  void	updateGame(Event _ev);
+  void	updateGame(Event &);
   void  playGame();
   void	displayGame();
 

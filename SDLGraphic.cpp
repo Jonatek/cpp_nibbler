@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Fri Apr  3 18:34:03 2015 Jonathan Quach
+// Last update Fri Apr  3 19:06:56 2015 Daniel Han
 //
 
 #include <iostream>
@@ -43,7 +43,7 @@ void SDLGraphic::createWindow(int x, int y)
   SDL_WM_SetCaption("Nibbler", NULL);
 }
 
-void SDLGraphic::updateEvent(Event &_newEvent)
+void SDLGraphic::updateEvent(Event & _newEvent)
 {
   SDL_Event event;
 

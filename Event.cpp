@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Thu Apr  2 15:18:35 2015 Daniel Han
+// Last update Fri Apr  3 19:13:18 2015 Daniel Han
 //
 
 #include <iostream>
@@ -13,7 +13,7 @@
 
 Event::Event()
 {
-  _event = NONE;
+  this->_event = NONE;
 }
 
 Event::~Event()
@@ -23,20 +23,19 @@ Event::~Event()
 
 EventType Event::getEventType() const
 {
-  return _event;
+  return (this->_event);
 }
 
 void Event::snakeStartMoving(EventType input)
 {
   if (input == ENTER)
-    this->_event = RIGHT;
+    this->_event = LEFT;
   else if (input == QUIT)
     this->_event = QUIT;
 }
 
 void Event::setNewDirection(EventType direction)
 {
-  std::cout << "caca" << std::endl;
   if (direction == LEFT)
     {
       if (this->_event == LEFT)
@@ -67,7 +66,7 @@ void Event::setEventType(EventType type)
   if (this->_event == NONE)
     snakeStartMoving(type);
   else if (type == LEFT || type == RIGHT)
-    setNewDirection(type);
+      setNewDirection(type);
   else if (type == PAUSE)
     {
       if (this->_event != PAUSE)
@@ -78,7 +77,7 @@ void Event::setEventType(EventType type)
       else
 	this->_event = _old;
     }
-  else
-    this->_event = type;
-  std::cout << "event updated with " << this->_event << std::endl;
+  else if (type == QUIT)
+    this->_event = QUIT;
+  std::cout << "event updated : " << this->_event << std::endl;
 }

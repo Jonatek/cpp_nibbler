@@ -5,13 +5,13 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 18:29:48 2015 Jonathan Quach
+// Last update Fri Apr  3 19:04:55 2015 Daniel Han
 //
 
 #include "Game.hpp"
 
 Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
-  : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui), _map(_x, _y, _gui)
+  : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui), _map(x, y, gui)
 {
   this->_loop = true;
   this->_gui->createWindow(_winX, _winY);
@@ -35,9 +35,9 @@ void		Game::playGame()
   Event		_ev;
   // Snake		_snake(this->_x, this->_y, this->_gui);
 
+  _map.drawObjects();
   while (this->_loop)
     {
-      _map.drawObjects();
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
       this->updateGame(_ev);
@@ -46,7 +46,7 @@ void		Game::playGame()
     }
 }
 
-void		Game::updateGame(Event _ev)
+void		Game::updateGame(Event & _ev)
 {
   this->_gui->updateEvent(_ev);
   if (_ev.getEventType() == QUIT)

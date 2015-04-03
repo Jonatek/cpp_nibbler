@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Fri Apr  3 18:32:40 2015 Jonathan Quach
+// Last update Fri Apr  3 18:54:45 2015 Daniel Han
 //
 
 #include <stdlib.h>
@@ -159,7 +159,7 @@ void	Map::drawObjects()
       x = 0;
       while (x < _caseX)
 	{
-	  if (getObject(x, y) == BODY)
+	  if (getObject(x, y) == HEAD || getObject(x, y) == BODY)
 	    _gui->drawSquare(x, y, BODY);
 	  std::cout << "x : " << x << std::endl;
 	  ++x;
