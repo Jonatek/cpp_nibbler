@@ -2,7 +2,7 @@
 
 Basically : Nibbler -> Game -> Map/Snake/IGui (not very important)
 
-=== Why don't we need to know where each position (x, y) ? ===
+=== Why don't we need to know where each position (x, y) is ? ===
 
 Here is a simple Map (3, 3) and his corresponding case
 for Map AND for Game (with Snake + IGui) :
