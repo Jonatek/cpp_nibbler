@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Tue Mar 31 18:57:29 2015 Daniel Han
+// Last update Fri Apr  3 14:00:13 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -13,9 +13,11 @@
 
 #include <SDL/SDL.h>
 #include <string>
+#include <vector>
 #include "IGui.hpp"
 #include "ErrorException.hpp"
 #include "Event.hpp"
+#include "Map.hpp"
 
 class SDLGraphic : public IGui
 {

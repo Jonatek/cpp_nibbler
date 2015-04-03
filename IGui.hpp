@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 20:34:14 2015 Jonathan Quach
-// Last update Tue Mar 31 18:56:41 2015 Daniel Han
+// Last update Fri Apr  3 15:07:31 2015 Jean-Paul SAYSANA
 //
 
 #ifndef _IGUI_HPP_
@@ -19,7 +19,7 @@ public:
   virtual ~IGui() {};
 
   virtual void createWindow(int x, int y) = 0;
-  virtual void drawSquare(int x, int y, ElementType) = 0;
+  virtual void drawSquare(int x, int y, ObjectType) = 0;
   virtual void removeSquare(int x, int y) = 0;
   virtual void updateEvent(Event &) = 0;
   // virtual void clearWindow() = 0;

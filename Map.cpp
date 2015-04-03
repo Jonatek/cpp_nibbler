@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Thu Apr  2 15:48:29 2015 Daniel Han
+// Last update Fri Apr  3 15:00:31 2015 Jean-Paul SAYSANA
 //
 
 #include <stdlib.h>
@@ -14,11 +14,12 @@
 //
 // Coplien Form
 //
-Map::Map(int caseX, int caseY)
+Map::Map(int caseX, int caseY, IGui *gui)
 {
   this->_objects.clear();
   this->_caseX = caseX;
   this->_caseY = caseY;
+  this->_gui = gui;
   initMap(caseX, caseY);
 }
 
@@ -42,14 +43,14 @@ Map::~Map()
 //
 // Init Map
 //
-void Map::initMap(int caseX, int caseY)
+void	Map::initMap(int caseX, int caseY)
 {
   initWall(caseX, caseY);
   initSnake(caseX, caseY);
   addRandomObject(FOOD);
 }
 
-void Map::initWall(int caseX, int caseY)
+void	Map::initWall(int caseX, int caseY)
 {
   int	x;
 
@@ -81,7 +82,7 @@ void Map::initWall(int caseX, int caseY)
     }
 }
 
-void Map::initSnake(int caseX, int caseY)
+void	Map::initSnake(int caseX, int caseY)
 {
   int	pos = (caseY / 2) * _caseX + (caseX / 2);
 
@@ -136,4 +137,26 @@ void Map::removeObject(int x, int y)
     }
   else
     this->_objects[pos] = NONE;
+}
+
+int	Map::getX(int pos)
+{
+  return (pos / this->_caseY);
+}
+
+int	Map::getY(int pos)
+{
+  return (pos % this->_caseY);
+}
+
+void	Map::drawObjects()
+{
+  int	i = 0;
+
+  for (std::vector<ObjectType>::iterator it = _objects.begin(); it != _objects.end(); ++it)
+    {
+      _gui->drawSquare(getY(i), getY(i), getObject(getY(i), getY(i)));
+      ++i;
+    }
+  std::cout << "CACAACACA" << i << std::endl;
 }

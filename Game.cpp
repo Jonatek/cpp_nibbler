@@ -5,15 +5,13 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 14:02:33 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 14:54:18 2015 Jean-Paul SAYSANA
 //
 
 #include "Game.hpp"
 
-Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui) : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui)
+Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui) : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui), _map(_x, _y, _gui)
 {
-  Map	_map(_x, _y);
-
   this->_gui = gui;
   this->_loop = true;
   this->_gui->createWindow(_winX, _winY);
@@ -27,6 +25,11 @@ Game	&Game::operator=(Game const &other)
 
 Game::~Game()
 {
+
+}
+
+void		Game::displayGame()
+{
   
 }
 
@@ -37,6 +40,7 @@ void		Game::playGame()
 
   while (this->_loop)
     {
+      _map.drawObjects();
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
       this->updateGame(_ev);

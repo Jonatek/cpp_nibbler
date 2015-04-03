@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Tue Mar 31 18:57:09 2015 Daniel Han
+// Last update Fri Apr  3 14:11:09 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -81,7 +81,7 @@ void SDLGraphic::drawSquare(int x, int y, ElementType type)
   SDL_Flip(_window);
 }
 
-void SDLGraphic::removeSquare(int x, int y)
+void	SDLGraphic::removeSquare(int x, int y)
 {
   SDL_Rect pos;
 

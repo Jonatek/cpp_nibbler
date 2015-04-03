@@ -5,12 +5,14 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Wed Apr  1 15:14:39 2015 Daniel Han
+## Last update Thu Apr  2 19:38:16 2015 Jean-Paul SAYSANA
 ##
 
 CORE		= 	nibbler
 
-CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
+# CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
+
+CPPFLAGS	+= 	 -fPIC
 
 CPP		= 	g++
 
@@ -21,6 +23,7 @@ CORE_SRC	= 	main.cpp \
 			Position.cpp \
 			Snake.cpp \
 			Map.cpp \
+			Game.cpp
 
 CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)
 
@@ -44,7 +47,7 @@ $(CORE)		: 	$(CORE_OBJ)
 	 		$(CPP) -o $(CORE) $(CORE_OBJ) -ldl -g3
 
 $(SDL)		:	$(SDL_OBJ)
-			$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED)
+			$(CPP) -o $(SDL) $(SDL_OBJ) $(SDLFLAGS) $(SHARED) -g3
 
 clean		:
 			$(RM) $(CORE_OBJ) $(SDL_OBJ)

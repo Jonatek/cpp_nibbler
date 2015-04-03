@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Thu Apr  2 19:47:18 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 14:13:00 2015 Jean-Paul SAYSANA
 //
 
 #include <dlfcn.h>
@@ -101,35 +101,6 @@ Nibbler		&Nibbler::operator=(Nibbler const &other)
     }
   return (*this);
 }
-
-void	Nibbler::loop()
-{
-  Event _ev;
-
-  _gui->createWindow(_winX, _winY);
-  // Game _game(_gui, _caseX, _caseY);
-    
-  Snake         _game(_caseX, _caseY, _gui);
-  Map		_map(_caseX, _caseY);
-
-  while (_loop)
-    {
-      // _game->startGame();
-
-      _gui->updateEvent(_ev);
-      if (_ev.getEventType() == QUIT)
-        _loop = false;
-      _game.move(_ev.getEventType());
-      usleep(50000);
-    }
-}
-
-
-/**
-   afficher la map entiere
-   je balance la map en param
-   
- **/
 
 void		Nibbler::launchGame()
 {

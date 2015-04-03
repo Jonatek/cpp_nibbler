@@ -5,13 +5,15 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Thu Apr  2 15:44:51 2015 Daniel Han
+// Last update Fri Apr  3 15:04:13 2015 Jean-Paul SAYSANA
 //
 
 #ifndef MAP_HPP_
 # define MAP_HPP_
 
 #include <vector>
+#include <iostream>
+#include "IGui.hpp"
 
 class Map
 {
@@ -33,14 +35,15 @@ public:
   //
 private:
   std::vector<ObjectType> _objects;
-  int _caseX;
-  int _caseY;
+  int		_caseX;
+  int		_caseY;
+  IGui		*_gui;
 
   //
   // Coplien Form
   //
 public:
-  Map(int, int);
+  Map(int, int, IGui *);
   Map(Map const &);
   Map & operator=(Map const &);
   ~Map();
@@ -61,7 +64,9 @@ public:
   void addRandomObject(ObjectType);
   bool addObject(int, int, ObjectType);
   void removeObject(int, int);
-
+  void drawObjects();
+  int	getX(int);
+  int	getY(int);
 };
 
 #endif /* !MAP_HPP_ */
