@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Thu Mar 26 19:40:57 2015 Jonathan Quach
-// Last update Tue Mar 31 18:25:16 2015 Daniel Han
+// Last update Fri Apr  3 16:26:07 2015 Daniel Han
 //
 
 #ifndef _EVENT_HPP
@@ -22,14 +22,6 @@ typedef enum
     QUIT,
     PAUSE
   } EventType;
-
-typedef enum
-  {
-    UNKNOW,
-    WALL,
-    HEAD,
-    BODY
-  } ElementType;
 
 class Event
 {

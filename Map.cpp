@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Fri Apr  3 15:00:31 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 16:21:18 2015 Daniel Han
 //
 
 #include <stdlib.h>
@@ -69,7 +69,7 @@ void	Map::initWall(int caseX, int caseY)
 	  if (x == 0 || x == (caseX - 1))
 	    _objects.push_back(WALL);
 	  else
-	    _objects.push_back(NONE);
+	    _objects.push_back(NOTHING);
 	  ++x;
 	}
       --caseY;
@@ -94,7 +94,7 @@ void	Map::initSnake(int caseX, int caseY)
 //
 // Get/Add/Remove Object
 //
-Map::ObjectType Map::getObject(int x, int y) const
+ObjectType Map::getObject(int x, int y) const
 {
   return (this->_objects[y * this->_caseX + x]);
 }
@@ -105,7 +105,7 @@ void Map::addRandomObject(ObjectType object)
   int	deathdoor = 4242;
 
   pos = rand() % (this->_caseX + this->_caseY);
-  while (this->_objects[pos] == NONE)
+  while (this->_objects[pos] == NOTHING)
     {
       pos = rand() % (this->_caseX + this->_caseY);
       --deathdoor;
@@ -117,7 +117,7 @@ bool Map::addObject(int x, int y, ObjectType object)
 {
   int	pos = y * this->_caseX + x;
 
-  if (this->_objects[pos] == NONE)
+  if (this->_objects[pos] == NOTHING)
     {
       this->_objects[pos] = object;
       return true;
@@ -133,10 +133,10 @@ void Map::removeObject(int x, int y)
   if (this->_objects[pos] == FOOD)
     {
       addObject(x, y, FOOD);
-      this->_objects[pos] = NONE;
+      this->_objects[pos] = NOTHING;
     }
   else
-    this->_objects[pos] = NONE;
+    this->_objects[pos] = NOTHING;
 }
 
 int	Map::getX(int pos)

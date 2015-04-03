@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Fri Apr  3 15:04:13 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 16:24:43 2015 Daniel Han
 //
 
 #ifndef MAP_HPP_
@@ -17,19 +17,6 @@
 
 class Map
 {
-  //
-  // Enum for ObjectType
-  //
-public:
-  enum ObjectType
-    {
-      NONE,
-      WALL,
-      HEAD,
-      BODY,
-      FOOD
-    };
-
   //
   // Attributs
   //
