@@ -1,6 +1,6 @@
 //
 // EXPLANATION.md
-// version 3
+// version 3.1
 //
 
 =================================================================
@@ -12,18 +12,25 @@ Basically :
     Nibbler -> Game -> Event/Snake/Map -> IGui
 
     -> Nibbler initialize our program (you can add more details)
-
     -> Game is our main class for our program
-    -> Game draw the map at the beginning and set Snake attributs x and y for
-       his HEAD position
-    -> Game modifies the Snake direction when modifying Event (move Event to
-       Snake ?) when pressing ENTER first then LEFT or RIGHT
-    -> When moving, Game will look at the future position of the Snake :
-       Snake already know his HEAD position, he will also know where he is
-       going to be
 
 =================================================================
 === QUESTION 2 ==================================================
+=== What is the Game class ? ====================================
+=================================================================
+
+- Game draw the map at the beginning and set Snake attributs x and y for
+  his HEAD position (cf. QUESTION 4)
+
+- Game modifies the Snake direction when modifying Event (move Event to
+  Snake ?) when pressing ENTER first then LEFT or RIGHT
+
+- When moving, Game will look at the future position of the Snake :
+  Snake already know his HEAD position and his direction so he will also
+  know where he is going to be (cf. QUESTION 5)
+
+=================================================================
+=== QUESTION 3 ==================================================
 === Why don't we need to know where each position (x, y) is ? ===
 =================================================================
 
@@ -44,7 +51,7 @@ Game will simply use the variable _map (of type Map) and call
 For the position (1, 1) : _map.getObject(1, 1).
 
 =================================================================
-=== QUESTION 3 ==================================================
+=== QUESTION 4 ==================================================
 === How can I display the Map ? =================================
 =================================================================
 
@@ -64,7 +71,7 @@ getObject(x, y) of Map to know what Game needs to draw.
 	   }
 
 =================================================================
-=== QUESTION 4 ==================================================
+=== QUESTION 5 ==================================================
 === When will I add/remove a square from the window ? ===========
 =================================================================
 
@@ -78,4 +85,4 @@ on this future position :
     - if BODY/WALL = then he is done...
 
 NB : moving his HEAD includes to add HEAD to his new position and add BODY to
-   his old position then modify his attributs x and y.
+   his old position then modify his attributs x and y (Snake HEAD position)
