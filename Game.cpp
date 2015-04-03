@@ -5,19 +5,19 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Thu Apr  2 20:00:47 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 14:02:33 2015 Jean-Paul SAYSANA
 //
 
 #include "Game.hpp"
 
-Game::Game(int winX, int winY, int x, int y, IGui *gui) // : _map(x, y) , _snake(x, y, _gui)
+Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui) : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui)
 {
-  Map	_map(x, y);
+  Map	_map(_x, _y);
 
   this->_gui = gui;
   this->_loop = true;
-  this->_gui->createWindow(winX, winY);
-  this->updateGame(winX, winY, x, y);
+  this->_gui->createWindow(_winX, _winY);
+  this->playGame();
 }
 
 Game	&Game::operator=(Game const &other)
@@ -30,22 +30,24 @@ Game::~Game()
   
 }
 
-void		Game::updateGame(int winX, int winY, int caseX, int caseY)
+void		Game::playGame()
 {
   Event		_ev;
-  Snake		_snake(caseX, caseY, _gui);
+  Snake		_snake(this->_x, this->_y, this->_gui);
 
-  // Game _game(_gui, _caseX, _caseY);
-
-
-  while (_loop)
+  while (this->_loop)
     {
+      // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
-      _gui->updateEvent(_ev);
-      if (_ev.getEventType() == QUIT)
-  	_loop = false;
+      this->updateGame(_ev);
       // _game.move(_ev.getEventType());
       usleep(50000);
     }
+}
 
+void		Game::updateGame(Event _ev)
+{
+  this->_gui->updateEvent(_ev);
+  if (_ev.getEventType() == QUIT)
+    this->_loop = false;
 }

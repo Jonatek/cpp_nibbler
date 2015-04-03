@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Thu Apr  2 19:46:59 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 13:44:55 2015 Jean-Paul SAYSANA
 //
 
 #ifndef GAME_HPP_
@@ -25,7 +25,11 @@ class Game
 private:
   // Map _map(int, int);
   // Snake _snake(int, int);
-
+  int	_winX;
+  int	_winY;
+  int	_x;
+  int	_y;
+  
   IGui *_gui;
   bool	_loop;
 
@@ -33,14 +37,14 @@ private:
   // Coplien form
   //
 public:
-  Game(int, int, int, int, IGui *);
+  Game(int const, int const, int const, int const, IGui *);
   Game(Game const &);
   Game & operator=(Game const &);
   ~Game();
 
 private:
-  void	updateGame(int, int, int, int);
-  void  gamingOn();
+  void	updateGame(Event _ev);
+  void  playGame();
   
 
 };
