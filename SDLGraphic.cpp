@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Fri Apr  3 14:11:09 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 18:34:03 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -64,7 +64,7 @@ void SDLGraphic::updateEvent(Event &_newEvent)
     }
 }
 
-void SDLGraphic::drawSquare(int x, int y, ElementType type)
+void SDLGraphic::drawSquare(int x, int y, ObjectType type)
 {
   SDL_Rect pos;
 
@@ -77,6 +77,10 @@ void SDLGraphic::drawSquare(int x, int y, ElementType type)
       SDL_BlitSurface(_snakeTexture, NULL, _window, &pos);
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
+    }
+  else if (type == WALL)
+    {
+      SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
     }
   SDL_Flip(_window);
 }

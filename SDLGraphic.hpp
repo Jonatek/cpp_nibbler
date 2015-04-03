@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Fri Apr  3 14:00:13 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 17:16:37 2015 Jonathan Quach
 //
 
 #ifndef _SDLGRAPHIC_HPP
@@ -33,7 +33,7 @@ public:
 
   virtual void createWindow(int, int);
   virtual void updateEvent(Event &);
-  virtual void drawSquare(int, int, ElementType);
+  virtual void drawSquare(int, int, ObjectType);
   virtual void removeSquare(int, int);
 };
 

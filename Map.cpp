@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Fri Apr  3 16:21:18 2015 Daniel Han
+// Last update Fri Apr  3 18:32:40 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -151,12 +151,26 @@ int	Map::getY(int pos)
 
 void	Map::drawObjects()
 {
-  int	i = 0;
+  int	y = 0;
+  int	x;
 
-  for (std::vector<ObjectType>::iterator it = _objects.begin(); it != _objects.end(); ++it)
+  while (y < _caseY)
     {
-      _gui->drawSquare(getY(i), getY(i), getObject(getY(i), getY(i)));
-      ++i;
+      x = 0;
+      while (x < _caseX)
+	{
+	  if (getObject(x, y) == BODY)
+	    _gui->drawSquare(x, y, BODY);
+	  std::cout << "x : " << x << std::endl;
+	  ++x;
+	}
+      std::cout << "GROSSE PUTE" << std::endl;
+      std::cout << "y : " << y << std::endl;
+      ++y;
     }
-  std::cout << "CACAACACA" << i << std::endl;
+  // for (std::vector<ObjectType>::iterator it = _objects.begin(); it != _objects.end(); ++it)
+  //   {
+  //     _gui->drawSquare(, , getObject(getY(i), getY(i)));
+  //     ++i;
+  //   }
 }

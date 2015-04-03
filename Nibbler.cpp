@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Fri Apr  3 14:13:00 2015 Jean-Paul SAYSANA
+// Last update Fri Apr  3 17:43:56 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
@@ -106,6 +106,8 @@ void		Nibbler::launchGame()
 {
   //loop();
   Game		game(_winX, _winY, _caseX, _caseY, _gui);
+
+  game.playGame();
 }
 
 void		*Nibbler::getHandler() const

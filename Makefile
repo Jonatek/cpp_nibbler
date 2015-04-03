@@ -5,7 +5,7 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Thu Apr  2 19:38:16 2015 Jean-Paul SAYSANA
+## Last update Fri Apr  3 18:29:41 2015 Jonathan Quach
 ##
 
 CORE		= 	nibbler
@@ -21,7 +21,6 @@ CORE_SRC	= 	main.cpp \
 			Nibbler.cpp \
 			Event.cpp \
 			Position.cpp \
-			Snake.cpp \
 			Map.cpp \
 			Game.cpp
 
