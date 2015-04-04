@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 13:10:01 2015 Jonathan Quach
+// Last update Sat Apr  4 13:14:54 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -166,6 +166,8 @@ void	Map::drawObjects()
 	    _gui->drawSquare(x, y, WALL);
 	  else if (getObject(x, y) == FOOD)
 	    _gui->drawSquare(x, y, FOOD);
+	  // else if (getObject(x, y) == NOTHING)
+	  //   _gui->drawSquare(x, y, NOTHING);
 	  ++x;
 	}
       ++y;

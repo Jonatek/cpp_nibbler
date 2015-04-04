@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sat Apr  4 13:07:18 2015 Jonathan Quach
+// Last update Sat Apr  4 13:13:30 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -82,9 +82,11 @@ void SDLGraphic::drawSquare(int x, int y, ObjectType type)
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
   else if (type == WALL)
-    {
-      SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
-    }
+    SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+  else if (type == FOOD)
+    SDL_BlitSurface(_foodTexture, NULL, _window, &pos);
+  else if (type == NOTHING)
+    SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
   SDL_Flip(_window);
 }
 
