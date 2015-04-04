@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Fri Apr  3 16:24:43 2015 Daniel Han
+// Last update Sat Apr  4 16:43:52 2015 Jonathan Quach
 //
 
 #ifndef MAP_HPP_
@@ -52,6 +52,7 @@ public:
   bool addObject(int, int, ObjectType);
   void removeObject(int, int);
   void drawObjects();
+  void checkFood();
   int	getX(int);
   int	getY(int);
 };

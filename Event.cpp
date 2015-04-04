@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Fri Apr  3 19:13:18 2015 Daniel Han
+// Last update Sat Apr  4 16:27:43 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -66,7 +66,7 @@ void Event::setEventType(EventType type)
   if (this->_event == NONE)
     snakeStartMoving(type);
   else if (type == LEFT || type == RIGHT)
-      setNewDirection(type);
+    setNewDirection(type);
   else if (type == PAUSE)
     {
       if (this->_event != PAUSE)

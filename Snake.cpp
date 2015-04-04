@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 16:15:26 2015 Daniel Han
+// Last update Sat Apr  4 16:46:36 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -28,7 +28,6 @@ Snake::Snake(int _x, int _y, IGui *_gui)
   // body.push_back(Position(x / 2 - 11, y / 2));
   // body.push_back(Position(x / 2 - 12, y / 2));
   // body.push_back(Position(x / 2 - 13, y / 2));
-
   for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
     {
       std::cout << it->getX() << " " << it->getY() << std::endl;
@@ -36,9 +35,15 @@ Snake::Snake(int _x, int _y, IGui *_gui)
     }
 }
 
-void		Snake::growUp()
+void		Snake::growUp(int x, int y)
 {
+  Position	head(x, y);
+
+  std::cout << "MMMMMMMMMMIIIIIAAAAAAAMMMMM" << std::endl;
+
   this->snakeSize += 1;
+  body.push_front(head);
+  gui->drawSquare(x, y, BODY);
 }
 
 EventType	Snake::checkObject(Map &map)
@@ -51,7 +56,18 @@ EventType	Snake::checkObject(Map &map)
   obj = map.getObject(x, y);
   if (obj == WALL)
     {
-      std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
+      if (obj == WALL)
+	std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
+      if (obj == FOOD)
+      	{
+	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
+	  growUp(x, y);
+      	}
+      if (obj == BODY)
+      	{
+      	  std::cout << "x : " << x << " y : " << y << std::endl;
+      	  std::cout << "SO DUMB" << std::endl;
+      	}
       return QUIT;
     }
   for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
@@ -81,6 +97,7 @@ EventType	 Snake::move(EventType direction, Map &map)
     head = *(body.begin());
 
   gui->removeSquare((body.back()).getX(), (body.back()).getY());
+  map.removeObject((body.back()).getX(), (body.back()).getY());
 
   body.pop_back();
   body.push_front(head);
@@ -90,6 +107,10 @@ EventType	 Snake::move(EventType direction, Map &map)
       if (checkObject(map) == QUIT)
 	return QUIT;
     }
+
+  map.addObject(head.getX(), head.getY(), BODY);
+
+  map.checkFood();
   gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
   return NONE;
 }
