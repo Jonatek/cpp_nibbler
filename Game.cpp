@@ -5,16 +5,15 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 12:52:56 2015 Jonathan Quach
+// Last update Sat Apr  4 13:05:46 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
 
 Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
-  : _winX(winX), _winY(winY), _x(x), _y(y), _map(x, y, gui)
+  : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui), _map(_x, _y, _gui)
 {
   this->_loop = true;
-  this->_gui = gui;
   this->_gui->createWindow(_winX, _winY);
 }
 

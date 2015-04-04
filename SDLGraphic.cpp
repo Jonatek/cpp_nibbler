@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sat Apr  4 12:51:56 2015 Jonathan Quach
+// Last update Sat Apr  4 13:07:18 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -40,6 +40,7 @@ void SDLGraphic::createWindow(int x, int y)
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
   _backgroundTexture = SDL_LoadBMP("./background.bmp");
   _wallTexture = SDL_LoadBMP("./wall.bmp");
+  _foodTexture = SDL_LoadBMP("./food.bmp");
   SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
 }

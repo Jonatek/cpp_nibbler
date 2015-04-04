@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 12:52:45 2015 Jonathan Quach
+// Last update Sat Apr  4 12:59:13 2015 Jonathan Quach
 //
 
 #ifndef GAME_HPP_
@@ -28,10 +28,10 @@ private:
   int	_winY;
   int	_x;
   int	_y;
+  IGui *_gui;
   Map _map;
   Event _ev;
 
-  IGui *_gui;
   bool	_loop;
 
   //

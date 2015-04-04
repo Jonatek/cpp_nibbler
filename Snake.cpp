@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 12:26:23 2015 Jonathan Quach
+// Last update Sat Apr  4 12:57:08 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -85,22 +85,4 @@ void		Snake::move(EventType direction)
 
   // checkWall();
   // gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
-
-  // switch (direction)
-  //   {
-  //   case RIGHT:
-  //     head = _snake.begin() + Coord(1, 0);
-  //     break;
-  // case UP:
-  //   newHead = *(_snake.begin()) + Coord(0, -1);
-  //   break;
-  // case DOWN:
-  //   newHead = *(_snake.begin()) + Coord(0, 1);
-  //   break;
-  // case LEFT:
-  //   newHead = *(_snake.begin()) + Coord(-1, 0);
-  //   break;
-  // default:
-  //   newHead = *(_snake.begin());
-  // }
 }
