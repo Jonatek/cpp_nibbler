@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 18:27:13 2015 Jonathan Quach
+// Last update Sat Apr  4 19:01:54 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -19,17 +19,6 @@ Snake::Snake(int _x, int _y, IGui *_gui)
   body.push_back(Position(x / 2 - 1, y / 2));
   body.push_back(Position(x / 2 - 2, y / 2));
   body.push_back(Position(x / 2 - 3, y / 2));
-  //std::cout << map.getObject(x / 2, y / 2) << std::endl;
-  // body.push_back(Position(x / 2 - 4, y / 2));
-  // body.push_back(Position(x / 2 - 5, y / 2));
-  // body.push_back(Position(x / 2 - 6, y / 2));
-  // body.push_back(Position(x / 2 - 7, y / 2));
-  // body.push_back(Position(x / 2 - 8, y / 2));
-  // body.push_back(Position(x / 2 - 9, y / 2));
-  // body.push_back(Position(x / 2 - 10, y / 2));
-  // body.push_back(Position(x / 2 - 11, y / 2));
-  // body.push_back(Position(x / 2 - 12, y / 2));
-  // body.push_back(Position(x / 2 - 13, y / 2));
   for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
     {
       std::cout << it->getX() << " " << it->getY() << std::endl;
@@ -82,7 +71,6 @@ EventType	Snake::checkObject(Map &map)
       	{
 	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
 	  growUp(_x, _y, map);
-
 	  Position food(rand() % x, rand() % y);
 
 	  while (map.addObject(food.getX(), food.getY(), FOOD) == false)
