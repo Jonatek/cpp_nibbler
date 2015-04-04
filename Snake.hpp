@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 17:28:24 2015 Jonathan Quach
+// Last update Sat Apr  4 15:38:59 2015 Jonathan Quach
 //
 
 #ifndef		SNAKE_HPP_
@@ -24,7 +24,7 @@ private:
   EventType     direction;
   int		snakeSize;
   IGui		*gui;
-  // std::list<Position> body;
+  std::list<Position> body;
 
 public:
   Snake(int, int, IGui *);
@@ -42,8 +42,6 @@ public:
   /*		MOVE		*/
   /******************************/
 
-  void		moveLeft();
-  void		moveRight();
   void		move(EventType);
   void	        checkWall();
 

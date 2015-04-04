@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 13:05:46 2015 Jonathan Quach
+// Last update Sat Apr  4 15:37:34 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
@@ -42,8 +42,8 @@ void		Game::playGame()
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
       this->updateGame();
-      move(_ev.getEventType());
-      usleep(50000);
+      _snake.move(_ev.getEventType());
+      usleep(60000);
     }
 }
 
@@ -52,9 +52,4 @@ void		Game::updateGame()
   _ev.setEventType(this->_gui->updateEvent());
   if (_ev.getEventType() == QUIT)
     this->_loop = false;
-}
-
-void		Game::move(EventType key)
-{
-  (void)key;
 }

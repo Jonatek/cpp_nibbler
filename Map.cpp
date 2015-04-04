@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 13:14:54 2015 Jonathan Quach
+// Last update Sat Apr  4 15:32:46 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -102,7 +102,7 @@ ObjectType Map::getObject(int x, int y) const
 void Map::addRandomObject(ObjectType object)
 {
   int	pos;
-  int	deathdoor = 4242;
+  int	deathdoor = 500;
 
   pos = rand() % (this->_caseX + this->_caseY);
   while (this->_objects[pos] == NOTHING)
@@ -160,9 +160,9 @@ void	Map::drawObjects()
       x = 0;
       while (x < _caseX)
 	{
-	  if (getObject(x, y) == HEAD || getObject(x, y) == BODY)
-	    _gui->drawSquare(x, y, BODY);
-	  else if (getObject(x, y) == WALL)
+	  // if (getObject(x, y) == HEAD || getObject(x, y) == BODY)
+	  //   _gui->drawSquare(x, y, BODY);
+	  if (getObject(x, y) == WALL)
 	    _gui->drawSquare(x, y, WALL);
 	  else if (getObject(x, y) == FOOD)
 	    _gui->drawSquare(x, y, FOOD);

@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 12:59:13 2015 Jonathan Quach
+// Last update Sat Apr  4 15:37:41 2015 Jonathan Quach
 //
 
 #ifndef GAME_HPP_
@@ -46,8 +46,6 @@ public:
   void	updateGame();
   void  playGame();
   void	displayGame();
-  void	move(EventType);
-
 };
 
 #endif /* !GAME_HPP_ */
