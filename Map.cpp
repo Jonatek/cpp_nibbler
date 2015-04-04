@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 16:49:58 2015 Jonathan Quach
+// Last update Sat Apr  4 17:09:51 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -89,7 +89,6 @@ void	Map::initSnake(int caseX, int caseY)
   this->_objects[pos] = HEAD;
   this->_objects[pos + 1] = BODY;
   this->_objects[pos + 2] = BODY;
-  std::cout << "pos : " << pos << std::endl;
 }
 
 //
@@ -106,7 +105,9 @@ void Map::addRandomObject(ObjectType object)
   int	deathdoor = 500;
 
   if (object == FOOD)
-    std::cout << "FOOOOOOOOOOOOOOD ADDDED" << std::endl;
+    {
+      std::cout << "FOOOOOOOOOOOOOOD ADDDED" << std::endl;
+    }
 
   pos = rand() % (this->_caseX * this->_caseY);
   while (this->_objects[pos] != NOTHING)
@@ -115,6 +116,14 @@ void Map::addRandomObject(ObjectType object)
       --deathdoor;
     }
   this->_objects[pos] = object;
+
+  int i = 0;
+  while (i != _caseX * _caseY)
+    {
+      if (_objects[i] == FOOD)
+	std::cout << "FOOOD DE MERDE : " << i << std::endl;
+      ++i;
+    }
 }
 
 bool Map::addObject(int x, int y, ObjectType object)
@@ -151,10 +160,6 @@ int	Map::getX(int pos)
 int	Map::getY(int pos)
 {
   return (pos % this->_caseY);
-}
-
-void	Map::checkFood()
-{
 }
 
 void	Map::drawObjects()
