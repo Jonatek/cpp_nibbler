@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 15:59:36 2015 Jonathan Quach
+// Last update Sat Apr  4 16:15:26 2015 Daniel Han
 //
 
 #include <iostream>
@@ -34,12 +34,14 @@ void		Snake::growUp()
   this->snakeSize += 1;
 }
 
-EventType	Snake::checkWall(Map &map)
+EventType	Snake::checkObject(Map &map)
 {
   int		x = body.begin()->getX();
   int		y = body.begin()->getY();
+  ObjectType	obj;
 
-  if (map.getObject(x, y) == WALL)
+  obj = map.getObject(x, y);
+  if (obj == WALL || obj == BODY)
     {
       std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
       return QUIT;
@@ -67,7 +69,7 @@ EventType	 Snake::move(EventType direction, Map &map)
   body.pop_back();
   body.push_front(head);
 
-  if (checkWall(map) == QUIT)
+  if (checkObject(map) == QUIT)
     return QUIT;
   gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
   return NONE;

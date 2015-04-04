@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 15:57:07 2015 Jonathan Quach
+// Last update Sat Apr  4 16:15:09 2015 Daniel Han
 //
 
 #ifndef		SNAKE_HPP_
@@ -43,7 +43,7 @@ public:
   /******************************/
 
   EventType	move(EventType, Map &);
-  EventType	checkWall(Map &);
+  EventType	checkObject(Map &);
 
 };
 
