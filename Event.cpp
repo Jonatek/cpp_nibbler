@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Sat Apr  4 16:27:43 2015 Jonathan Quach
+// Last update Sat Apr  4 18:48:55 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -29,7 +29,7 @@ EventType Event::getEventType() const
 void Event::snakeStartMoving(EventType input)
 {
   if (input == ENTER)
-    this->_event = LEFT;
+    this->_event = RIGHT;
   else if (input == QUIT)
     this->_event = QUIT;
 }

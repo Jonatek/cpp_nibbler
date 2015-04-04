@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sat Apr  4 14:56:37 2015 Jonathan Quach
+// Last update Sat Apr  4 18:53:19 2015 Jonathan Quach
 //
 
 #include <dlfcn.h>
@@ -18,7 +18,7 @@
 #include "Game.hpp"
 
 Nibbler::Nibbler(const std::vector<std::string> &argv)
-  : _winX(1024), _winY(980), _loop(true)
+  : _loop(true)
 {
   int width;
   int height;
@@ -42,6 +42,10 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   ss.clear();
   ss.str(argv[3]);
   ss >> libName;
+
+  _winX = width * 20;
+  _winY = height * 20;
+
   // void *dlopen(const char *filename, int flag)
   // dlopen loads the dynamic library file, and return an "opaque" handle
   // RTDL_LAZY -> lazy binding. Only resolve symbols as the code it need it is exec

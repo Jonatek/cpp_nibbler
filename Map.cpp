@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 18:26:35 2015 Jonathan Quach
+// Last update Sat Apr  4 18:38:05 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -20,7 +20,6 @@ Map::Map(int caseX, int caseY, IGui *gui)
   this->_caseX = caseX;
   this->_caseY = caseY;
   this->_gui = gui;
-  std::cout << "_caseX =======> " << _caseX << std::endl;
   initMap(caseX, caseY);
 }
 
@@ -163,8 +162,6 @@ void	Map::drawObjects()
       x = 0;
       while (x < _caseX)
 	{
-	  // if (getObject(x, y) == HEAD || getObject(x, y) == BODY)
-	  //   _gui->drawSquare(x, y, BODY);
 	  if (getObject(x, y) == WALL)
 	    _gui->drawSquare(x, y, WALL);
 	  else if (getObject(x, y) == FOOD)
