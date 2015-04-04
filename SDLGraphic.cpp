@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Fri Apr  3 19:06:56 2015 Daniel Han
+// Last update Sat Apr  4 12:51:56 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -39,11 +39,12 @@ void SDLGraphic::createWindow(int x, int y)
   _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
   _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
   _backgroundTexture = SDL_LoadBMP("./background.bmp");
+  _wallTexture = SDL_LoadBMP("./wall.bmp");
   SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
 }
 
-void SDLGraphic::updateEvent(Event & _newEvent)
+EventType SDLGraphic::updateEvent()
 {
   SDL_Event event;
 
@@ -53,15 +54,16 @@ void SDLGraphic::updateEvent(Event & _newEvent)
     case SDL_KEYDOWN:
       {
 	if (event.key.keysym.sym == SDLK_RETURN)
-	  _newEvent.setEventType(ENTER);
+	  return ENTER;
 	if (event.key.keysym.sym == SDLK_ESCAPE)
-	  _newEvent.setEventType(QUIT);
+	  return QUIT;
 	if (event.key.keysym.sym == SDLK_LEFT)
-	  _newEvent.setEventType(LEFT);
+	  return LEFT;
 	if (event.key.keysym.sym == SDLK_RIGHT)
-	  _newEvent.setEventType(RIGHT);
+	  return RIGHT;
       }
     }
+  return NONE;
 }
 
 void SDLGraphic::drawSquare(int x, int y, ObjectType type)
@@ -80,7 +82,7 @@ void SDLGraphic::drawSquare(int x, int y, ObjectType type)
     }
   else if (type == WALL)
     {
-      SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
+      SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
     }
   SDL_Flip(_window);
 }

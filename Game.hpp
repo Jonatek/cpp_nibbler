@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 19:05:02 2015 Daniel Han
+// Last update Sat Apr  4 12:52:45 2015 Jonathan Quach
 //
 
 #ifndef GAME_HPP_
@@ -29,6 +29,7 @@ private:
   int	_x;
   int	_y;
   Map _map;
+  Event _ev;
 
   IGui *_gui;
   bool	_loop;
@@ -42,9 +43,10 @@ public:
   Game & operator=(Game const &);
   ~Game();
 
-  void	updateGame(Event &);
+  void	updateGame();
   void  playGame();
   void	displayGame();
+  void	move(EventType);
 
 };
 

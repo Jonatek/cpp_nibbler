@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 05:49:42 2015 Daniel Han
+// Last update Sat Apr  4 12:52:56 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
@@ -35,23 +35,27 @@ void		Game::displayGame()
 
 void		Game::playGame()
 {
-  Event		_ev;
-  // Snake		_snake(this->_x, this->_y, this->_gui);
+  Snake		_snake(this->_x, this->_y, this->_gui);
 
   _map.drawObjects();
   while (this->_loop)
     {
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
-      this->updateGame(_ev);
-      // _game.move(_ev.getEventType());
+      this->updateGame();
+      move(_ev.getEventType());
       usleep(50000);
     }
 }
 
-void		Game::updateGame(Event & _ev)
+void		Game::updateGame()
 {
-  this->_gui->updateEvent(_ev);
+  _ev.setEventType(this->_gui->updateEvent());
   if (_ev.getEventType() == QUIT)
     this->_loop = false;
+}
+
+void		Game::move(EventType key)
+{
+  (void)key;
 }

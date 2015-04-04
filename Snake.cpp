@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 17:28:50 2015 Jonathan Quach
+// Last update Sat Apr  4 12:26:23 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -64,6 +64,7 @@ void		Snake::checkWall()
 
 void		Snake::move(EventType direction)
 {
+  (void)direction;
   // Position head;
 
   // if (direction == RIGHT)

@@ -5,7 +5,7 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Sat Apr  4 05:48:31 2015 Daniel Han
+## Last update Sat Apr  4 12:26:04 2015 Jonathan Quach
 ##
 
 CORE		= 	nibbler
@@ -22,6 +22,7 @@ CORE_SRC	= 	main.cpp \
 			Event.cpp \
 			Position.cpp \
 			Map.cpp \
+			Snake.cpp \
 			Game.cpp
 
 CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)

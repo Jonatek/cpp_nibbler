@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 05:02:50 2015 Daniel Han
+// Last update Sat Apr  4 12:53:48 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -162,6 +162,8 @@ void	Map::drawObjects()
 	{
 	  if (getObject(x, y) == HEAD || getObject(x, y) == BODY)
 	    _gui->drawSquare(x, y, BODY);
+	  else if (getObject(x, y) == WALL)
+	    _gui->drawSquare(x, y, WALL);
 	  ++x;
 	}
       ++y;
