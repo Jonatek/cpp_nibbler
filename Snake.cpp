@@ -22,6 +22,13 @@ Snake::Snake(int _x, int _y, IGui *_gui)
   body.push_back(Position(x / 2 - 5, y / 2));
   body.push_back(Position(x / 2 - 6, y / 2));
   body.push_back(Position(x / 2 - 7, y / 2));
+  body.push_back(Position(x / 2 - 8, y / 2));
+  // body.push_back(Position(x / 2 - 9, y / 2));
+  // body.push_back(Position(x / 2 - 10, y / 2));
+  // body.push_back(Position(x / 2 - 11, y / 2));
+  // body.push_back(Position(x / 2 - 12, y / 2));
+  // body.push_back(Position(x / 2 - 13, y / 2));
+
   for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
     {
       std::cout << it->getX() << " " << it->getY() << std::endl;
@@ -39,12 +46,21 @@ EventType	Snake::checkObject(Map &map)
   int		x = body.begin()->getX();
   int		y = body.begin()->getY();
   ObjectType	obj;
+  int		counter = 0;
 
   obj = map.getObject(x, y);
-  if (obj == WALL || obj == BODY)
+  if (obj == WALL)
     {
       std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
       return QUIT;
+    }
+  for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
+    {
+      if (++counter > 1)
+	{
+	  if (x == it->getX() && y == it->getY()) 
+	    return QUIT;
+	}
     }
   return NONE;
 }
@@ -69,8 +85,11 @@ EventType	 Snake::move(EventType direction, Map &map)
   body.pop_back();
   body.push_front(head);
 
-  if (checkObject(map) == QUIT)
-    return QUIT;
+  if (direction != NONE)
+    {
+      if (checkObject(map) == QUIT)
+	return QUIT;
+    }
   gui->drawSquare((body.begin())->getX(), (body.begin())->getY(), BODY);
   return NONE;
 }
