@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 16:45:23 2015 Jonathan Quach
+// Last update Sat Apr  4 16:49:58 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -155,7 +155,6 @@ int	Map::getY(int pos)
 
 void	Map::checkFood()
 {
-  int	pos = 0;
 }
 
 void	Map::drawObjects()

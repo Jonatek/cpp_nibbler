@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 16:46:36 2015 Jonathan Quach
+// Last update Sat Apr  4 16:48:56 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -74,7 +74,7 @@ EventType	Snake::checkObject(Map &map)
     {
       if (++counter > 1)
 	{
-	  if (x == it->getX() && y == it->getY()) 
+	  if (x == it->getX() && y == it->getY())
 	    return QUIT;
 	}
     }
