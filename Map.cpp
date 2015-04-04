@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 15:48:48 2015 Jonathan Quach
+// Last update Sat Apr  4 16:05:04 2015 Daniel Han
 //
 
 #include <stdlib.h>
@@ -47,7 +47,7 @@ void	Map::initMap(int caseX, int caseY)
 {
   initWall(caseX, caseY);
   initSnake(caseX, caseY);
-  // addRandomObject(FOOD);
+  addRandomObject(FOOD);
 }
 
 void	Map::initWall(int caseX, int caseY)
@@ -104,10 +104,10 @@ void Map::addRandomObject(ObjectType object)
   int	pos;
   int	deathdoor = 500;
 
-  pos = rand() % (this->_caseX + this->_caseY);
-  while (this->_objects[pos] == NOTHING)
+  pos = rand() % (this->_caseX * this->_caseY);
+  while (this->_objects[pos] != NOTHING)
     {
-      pos = rand() % (this->_caseX + this->_caseY);
+      pos = rand() % (this->_caseX * this->_caseY);
       --deathdoor;
     }
   this->_objects[pos] = object;
