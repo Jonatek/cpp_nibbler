@@ -5,10 +5,11 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 17:14:25 2015 Jonathan Quach
+// Last update Sat Apr  4 17:55:01 2015 Jonathan Quach
 //
 
 #include <iostream>
+#include <cstdlib>
 #include "Snake.hpp"
 
 Snake::Snake(int _x, int _y, IGui *_gui)
@@ -35,33 +36,32 @@ Snake::Snake(int _x, int _y, IGui *_gui)
     }
 }
 
-void		Snake::growUp(int x, int y)
+void		Snake::growUp(int _x, int _y)
 {
-  Position	head(x, y);
+  Position	head(_x, _y);
 
   std::cout << "MMMMMMMMMMIIIIIAAAAAAAMMMMM" << std::endl;
 
   this->snakeSize += 1;
   body.push_front(head);
-  gui->drawSquare(x, y, BODY);
+  gui->drawSquare(_x, _y, BODY);
 }
 
 EventType	Snake::checkObject(Map &map)
 {
-  int		x = body.begin()->getX();
-  int		y = body.begin()->getY();
+  int		_x = body.begin()->getX();
+  int		_y = body.begin()->getY();
   ObjectType	obj;
-  // int		counter = 0;
 
-  obj = map.getObject(x, y);
-  std::cout << "OBJ X =  " << x << " OBJ Y = " << y << std::endl;
+  obj = map.getObject(_x, _y);
+  std::cout << "OBJ X =  " << _x << " OBJ Y = " << _y << std::endl;
   if (obj == WALL)
     {
       if (obj == WALL)
 	std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
       if (obj == BODY)
       	{
-      	  std::cout << "x : " << x << " y : " << y << std::endl;
+      	  std::cout << "x : " << _x << " y : " << _y << std::endl;
       	  std::cout << "SO DUMB" << std::endl;
       	}
       return QUIT;
@@ -71,7 +71,18 @@ EventType	Snake::checkObject(Map &map)
       if (obj == FOOD)
       	{
 	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
-	  growUp(x, y);
+	  growUp(_x, _y);
+
+	  Position food(rand() % x, rand() % y);
+
+	  while (map.addObject(food.getX(), food.getY(), FOOD) == false)
+	    {
+	      food.setX(rand() % x);
+	      food.setY(rand() % y);
+	    }
+	  gui->drawSquare(food.getX(), food.getY(), FOOD);
+	  std::cout << "-----------> SUCCESSFULLY ADD FOOD ON DAT FUCKING MAP"
+		    << std::endl;
       	}
     }
   // for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)

@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 17:09:51 2015 Jonathan Quach
+// Last update Sat Apr  4 17:36:22 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -105,9 +105,7 @@ void Map::addRandomObject(ObjectType object)
   int	deathdoor = 500;
 
   if (object == FOOD)
-    {
-      std::cout << "FOOOOOOOOOOOOOOD ADDDED" << std::endl;
-    }
+    std::cout << "FOOOOOOOOOOOOOOD ADDDED" << std::endl;
 
   pos = rand() % (this->_caseX * this->_caseY);
   while (this->_objects[pos] != NOTHING)
