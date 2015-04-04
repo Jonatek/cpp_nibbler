@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 17:55:01 2015 Jonathan Quach
+// Last update Sat Apr  4 17:58:47 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -36,7 +36,7 @@ Snake::Snake(int _x, int _y, IGui *_gui)
     }
 }
 
-void		Snake::growUp(int _x, int _y)
+void		Snake::growUp(int _x, int _y, Map &map)
 {
   Position	head(_x, _y);
 
@@ -45,6 +45,7 @@ void		Snake::growUp(int _x, int _y)
   this->snakeSize += 1;
   body.push_front(head);
   gui->drawSquare(_x, _y, BODY);
+  map.addObject(_x, _y, HEAD);
 }
 
 EventType	Snake::checkObject(Map &map)
@@ -71,7 +72,7 @@ EventType	Snake::checkObject(Map &map)
       if (obj == FOOD)
       	{
 	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
-	  growUp(_x, _y);
+	  growUp(_x, _y, map);
 
 	  Position food(rand() % x, rand() % y);
 

@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 16:36:44 2015 Jonathan Quach
+// Last update Sat Apr  4 17:58:56 2015 Jonathan Quach
 //
 
 #ifndef		SNAKE_HPP_
@@ -36,7 +36,7 @@ public:
   /*		CHANGES		*/
   /******************************/
 
-  void		growUp(int x, int y);
+  void		growUp(int _x, int _y, Map &);
 
   /******************************/
   /*		MOVE		*/
