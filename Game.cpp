@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Fri Apr  3 19:04:55 2015 Daniel Han
+// Last update Sat Apr  4 05:45:45 2015 Daniel Han
 //
 
 #include "Game.hpp"
@@ -19,11 +19,13 @@ Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
 
 Game	&Game::operator=(Game const &other)
 {
+  if (this != &other)
+    this->_gui = other._gui;
+  return (*this);
 }
 
 Game::~Game()
 {
-
 }
 
 void		Game::displayGame()
