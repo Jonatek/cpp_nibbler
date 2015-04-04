@@ -5,14 +5,14 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Fri Apr  3 18:29:41 2015 Jonathan Quach
+## Last update Sat Apr  4 05:48:31 2015 Daniel Han
 ##
 
 CORE		= 	nibbler
 
-# CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
+CPPFLAGS	+= 	-W -Wall -Werror -Wextra -fPIC
 
-CPPFLAGS	+= 	 -fPIC
+# CPPFLAGS	+= 	 -fPIC
 
 CPP		= 	g++
 
