@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 15:58:34 2015 Jonathan Quach
+// Last update Sat Apr  4 18:24:17 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
@@ -38,6 +38,7 @@ void		Game::playGame()
   Event		quit;
 
   _map.drawObjects();
+  _snake.addSnakeInMap(_map);
   while (this->_loop)
     {
       // Game _game(_gui, _caseX, _caseY);

@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 17:58:47 2015 Jonathan Quach
+// Last update Sat Apr  4 18:27:13 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -19,6 +19,7 @@ Snake::Snake(int _x, int _y, IGui *_gui)
   body.push_back(Position(x / 2 - 1, y / 2));
   body.push_back(Position(x / 2 - 2, y / 2));
   body.push_back(Position(x / 2 - 3, y / 2));
+  //std::cout << map.getObject(x / 2, y / 2) << std::endl;
   // body.push_back(Position(x / 2 - 4, y / 2));
   // body.push_back(Position(x / 2 - 5, y / 2));
   // body.push_back(Position(x / 2 - 6, y / 2));
@@ -34,6 +35,14 @@ Snake::Snake(int _x, int _y, IGui *_gui)
       std::cout << it->getX() << " " << it->getY() << std::endl;
       gui->drawSquare(it->getX(), it->getY(), BODY);
     }
+}
+
+void		Snake::addSnakeInMap(Map &map)
+{
+  map.addObject(x / 2, y / 2, HEAD);
+  map.addObject(x / 2 - 1, y / 2, BODY);
+  map.addObject(x / 2 - 2, y / 2, BODY);
+  map.addObject(x / 2 - 3, y / 2, BODY);
 }
 
 void		Snake::growUp(int _x, int _y, Map &map)
@@ -56,7 +65,7 @@ EventType	Snake::checkObject(Map &map)
 
   obj = map.getObject(_x, _y);
   std::cout << "OBJ X =  " << _x << " OBJ Y = " << _y << std::endl;
-  if (obj == WALL)
+  if (obj == WALL || obj == BODY || obj == HEAD)
     {
       if (obj == WALL)
 	std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
@@ -86,14 +95,6 @@ EventType	Snake::checkObject(Map &map)
 		    << std::endl;
       	}
     }
-  // for (std::list<Position>::iterator it = body.begin(); it != body.end(); ++it)
-  //   {
-  //     if (++counter > 1)
-  // 	{
-  // 	  if (x == it->getX() && y == it->getY())
-  // 	    return QUIT;
-  // 	}
-  //   }
   return NONE;
 }
 
@@ -124,7 +125,7 @@ EventType	 Snake::move(EventType direction, Map &map)
 	return QUIT;
     }
 
-  map.addObject(head.getX(), head.getY(), BODY);
+  map.addObject(head.getX(), head.getY(), HEAD);
 
   // map.checkFood();
 

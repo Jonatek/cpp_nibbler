@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 17:36:22 2015 Jonathan Quach
+// Last update Sat Apr  4 18:26:35 2015 Jonathan Quach
 //
 
 #include <stdlib.h>
@@ -20,6 +20,7 @@ Map::Map(int caseX, int caseY, IGui *gui)
   this->_caseX = caseX;
   this->_caseY = caseY;
   this->_gui = gui;
+  std::cout << "_caseX =======> " << _caseX << std::endl;
   initMap(caseX, caseY);
 }
 
@@ -46,7 +47,6 @@ Map::~Map()
 void	Map::initMap(int caseX, int caseY)
 {
   initWall(caseX, caseY);
-  initSnake(caseX, caseY);
   addRandomObject(FOOD);
 }
 
@@ -80,15 +80,6 @@ void	Map::initWall(int caseX, int caseY)
       _objects.push_back(WALL);
       ++x;
     }
-}
-
-void	Map::initSnake(int caseX, int caseY)
-{
-  int	pos = (caseY / 2) * _caseX + (caseX / 2);
-
-  this->_objects[pos] = HEAD;
-  this->_objects[pos + 1] = BODY;
-  this->_objects[pos + 2] = BODY;
 }
 
 //
@@ -128,6 +119,7 @@ bool Map::addObject(int x, int y, ObjectType object)
 {
   int	pos = y * this->_caseX + x;
 
+  std::cout << "pos ----> " << pos << " x : " << x << " y : " << y << " caseX : " << _caseX << std::endl;
   if (this->_objects[pos] == NOTHING)
     {
       this->_objects[pos] = object;

@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Sat Apr  4 17:07:10 2015 Jonathan Quach
+// Last update Sat Apr  4 18:26:43 2015 Jonathan Quach
 //
 
 #ifndef MAP_HPP_
@@ -41,7 +41,6 @@ public:
 public:
   void initMap(int, int);
   void initWall(int, int);
-  void initSnake(int, int);
 
   //
   // Get/Add/Remove Object
