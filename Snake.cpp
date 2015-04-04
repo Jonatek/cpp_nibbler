@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 19:01:54 2015 Jonathan Quach
+// Last update Sat Apr  4 19:11:00 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -71,6 +71,7 @@ EventType	Snake::checkObject(Map &map)
       	{
 	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
 	  growUp(_x, _y, map);
+
 	  Position food(rand() % x, rand() % y);
 
 	  while (map.addObject(food.getX(), food.getY(), FOOD) == false)
@@ -98,6 +99,8 @@ EventType	 Snake::move(EventType direction, Map &map)
     head = *(body.begin()) + Position(0, -1);
   else if (direction == DOWN)
     head = *(body.begin()) + Position(0, 1);
+  else if (direction == NONE)
+    return NONE;
   else
     head = *(body.begin());
 
