@@ -10,6 +10,7 @@ LISTE DES TACHES
 	- 
 
       > QUALITY CHECK
+	- Forme coplienne !
 	- Enlever tous les commentaires et affichage test
+      	- Ne pas oublier le moindre référence
 	- Ne pas oublier le moindre const (variables, fonctions et params)
-      	- 

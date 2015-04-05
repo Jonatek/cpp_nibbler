@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Apr  5 04:00:59 2015 Daniel Han
+// Last update Sun Apr  5 05:57:30 2015 Daniel Han
 //
 
 #include <iostream>
@@ -66,6 +66,10 @@ EventType SDLGraphic::updateEvent()
 	  return SPACE;
 	if (event.key.keysym.sym == SDLK_p)
 	  return PAUSE;
+	if (event.key.keysym.sym == SDLK_g)
+	  return GOD_MODE;
+	if (event.key.keysym.sym == SDLK_f)
+	  return FOOD_PUSH;
       }
     }
   return NONE;
@@ -85,9 +89,9 @@ void SDLGraphic::drawSquare(int x, int y, ObjectType type)
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
-  else if (type == WALL)
+  else if (type == WALL || type == BLOCK)
     SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
-  else if (type == FOOD)
+  else if (type == FOOD || type == POISON) // need something else
     SDL_BlitSurface(_foodTexture, NULL, _window, &pos);
   else if (type == NOTHING)
     SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);

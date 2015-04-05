@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 04:04:21 2015 Daniel Han
+// Last update Sun Apr  5 06:05:52 2015 Daniel Han
 //
 
 #include "Game.hpp"
@@ -17,12 +17,29 @@ Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
   this->_gui->createWindow(_winX, _winY);
 }
 
-Game	&Game::operator=(Game const &other)
-{
-  if (this != &other)
-    this->_gui = other._gui;
-  return (*this);
-}
+// Game::Game(Game const & other)
+// {
+//   this->_winX = other._winX;
+//   this->_winY = other._winY;
+//   this->_x = other._x;
+//   this->_y = other._x;
+//   this->_gui = other._gui;
+//   this->_map = other._map;
+// }
+
+// Game & Game::operator=(Game const &other)
+// {
+//   if (this != &other)
+//     {
+//       this->_winX = other._winX;
+//       this->_winY = other._winY;
+//       this->_x = other._x;
+//       this->_y = other._x;
+//       this->_gui = other._gui;
+//       this->_map = other._map;
+//     }
+//   return (*this);
+// }
 
 Game::~Game()
 {
@@ -34,33 +51,49 @@ void		Game::displayGame()
 
 void		Game::playGame()
 {
-  Snake		_snake(this->_x, this->_y, this->_gui);
+  Snake		snake(this->_x, this->_y, this->_gui);
   Event		quit;
 
-  _snake.addSnakeInMap(_map);
-  _map.drawObjects();
+  this->_map.drawObjects();
+  snake.addSnakeInMap(_map);
   while (this->_loop)
     {
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
-      this->updateGame(_snake);
-      if (_snake.move(_ev.getEventType(), _map) == QUIT)
+      this->handleInput(snake);
+      if (snake.move(_ev.getEventType(), _map) == QUIT)
 	this->_loop = false;
-      usleep(_snake.getSpeed());
+      usleep(snake.getSpeed());
     }
 }
 
-void		Game::updateGame(Snake & _snake)
+void		Game::handleInput(Snake & snake)
 {
-  EventType	new_event;
+  EventType     input;
 
   this->_ev.setEventType(this->_gui->updateEvent());
-  new_event = this->_ev.getEventType();
-  if (new_event == QUIT)
+  input = this->_ev.getEventType();
+  if (input == QUIT)
     this->_loop = false;
-  else if (new_event == SPACE)
+  else if (input == SPACE || input == GOD_MODE || input == FOOD_PUSH)
+    updateGame(snake, input);
+}
+
+void		Game::updateGame(Snake & snake, EventType input)
+{
+  if (input == SPACE)
     {
-      _snake.setSpeed(_snake.getSpeed() - 5000);
+      snake.setSpeed(snake.getSpeed() - 5000);
+      this->_ev.setOldEvent();
+    }
+  else if (input == GOD_MODE)
+    {
+      snake.setGodMode();
+      this->_ev.setOldEvent();
+    }
+  else if (input == FOOD_PUSH)
+    {
+      this->_map.addRandomObject(FOOD, true);
       this->_ev.setOldEvent();
     }
 }

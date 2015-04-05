@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 03:05:53 2015 Daniel Han
+// Last update Sun Apr  5 05:52:16 2015 Daniel Han
 //
 
 #ifndef		SNAKE_HPP_
@@ -22,6 +22,7 @@
 class		Snake
 {
 private:
+  bool		god_mode;
   int		x;
   int		y;
   int	        size;
@@ -31,13 +32,14 @@ private:
 
 public:
   Snake(int, int, IGui *);
-  ~Snake() {};
   Snake(Snake const &);
   Snake &operator=(Snake const &);
+  ~Snake();
 
   int		getSize() const;
   int		getSpeed() const;
   void		setSpeed(int);
+  void		setGodMode();
 
   /******************************/
   /*		CHANGES		*/

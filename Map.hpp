@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Sun Apr  5 03:40:40 2015 Daniel Han
+// Last update Sun Apr  5 04:43:35 2015 Daniel Han
 //
 
 #ifndef MAP_HPP_
@@ -41,6 +41,8 @@ public:
 public:
   void initMap(int, int);
   void initWall(int, int);
+  void initRandomFood();
+  void initRandomBlock(int, int);
 
   //
   // Get/Add/Remove Object

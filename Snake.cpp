@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 04:11:37 2015 Daniel Han
+// Last update Sun Apr  5 05:52:09 2015 Daniel Han
 //
 
 #include <iostream>
@@ -13,7 +13,7 @@
 #include "Snake.hpp"
 
 Snake::Snake(int _x, int _y, IGui *_gui)
-  : x(_x), y(_y), size(4), speed(100000), gui(_gui)
+  : god_mode(false), x(_x), y(_y), size(4), speed(100000), gui(_gui)
 {
   body.push_back(Position(x / 2 , y / 2));
   body.push_back(Position(x / 2 - 1, y / 2));
@@ -24,6 +24,34 @@ Snake::Snake(int _x, int _y, IGui *_gui)
       std::cout << it->getX() << " " << it->getY() << std::endl;
       gui->drawSquare(it->getX(), it->getY(), BODY);
     }
+}
+
+Snake::Snake(Snake const & other)
+{
+  this->god_mode = other.god_mode;
+  this->x = other.x;
+  this->y = other.y;
+  this->size = other.size;
+  this->speed = other.speed;
+  this->gui = other.gui;
+}
+
+Snake & Snake::operator=(Snake const & other)
+{
+  if (this != &other)
+    {
+      this->god_mode = other.god_mode;
+      this->x = other.x;
+      this->y = other.y;
+      this->size = other.size;
+      this->speed = other.speed;
+      this->gui = other.gui;
+    }
+  return (*this);
+}
+
+Snake::~Snake()
+{
 }
 
 int		Snake::getSize() const
@@ -42,6 +70,14 @@ void		Snake::setSpeed(int new_speed)
     this->speed = MAX_SPEED;
   else
     this->speed = new_speed;
+}
+
+void		Snake::setGodMode()
+{
+  if (this->god_mode == false)
+    this->god_mode = true;
+  else
+    this->god_mode = false;
 }
 
 void		Snake::addSnakeInMap(Map &map)
@@ -83,6 +119,12 @@ EventType	Snake::checkObject(Map &map)
       // 	  std::cout << "SO DUMB" << std::endl;
       // 	}
       return QUIT;
+    }
+  else if (obj == BLOCK)
+    {
+      if (this->god_mode == false)
+	return QUIT;
+      return NONE;
     }
   else if (obj == FOOD)
     {
