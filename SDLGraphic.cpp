@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Apr  5 07:14:25 2015 Daniel Han
+// Last update Sun Apr  5 07:36:43 2015 Daniel Han
 //
 
 #include <iostream>
@@ -37,10 +37,10 @@ void SDLGraphic::createWindow(int const x, int const y)
   // 			 + SDL_GetError());
 
   this->_window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  this->_snakeTexture = SDL_LoadBMP("./snakepart.bmp");
-  this->_backgroundTexture = SDL_LoadBMP("./background.bmp");
-  this->_wallTexture = SDL_LoadBMP("./wall.bmp");
-  this->_foodTexture = SDL_LoadBMP("./food.bmp");
+  this->_snakeTexture = SDL_LoadBMP("./texture/snakepart.bmp");
+  this->_backgroundTexture = SDL_LoadBMP("./texture/background.bmp");
+  this->_wallTexture = SDL_LoadBMP("./texture/wall.bmp");
+  this->_foodTexture = SDL_LoadBMP("./texture/food.bmp");
   SDL_FillRect(this->_window, NULL,
 	       SDL_MapRGB(this->_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
