@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 18:22:21 2015 Jonathan Quach
+// Last update Sun Apr  5 03:05:53 2015 Daniel Han
 //
 
 #ifndef		SNAKE_HPP_
@@ -17,12 +17,15 @@
 #include "IGui.hpp"
 #include "Map.hpp"
 
+#define MAX_SPEED 20000
+
 class		Snake
 {
 private:
   int		x;
   int		y;
-  int		snakeSize;
+  int	        size;
+  int		speed;
   IGui		*gui;
   std::list<Position> body;
 
@@ -32,12 +35,17 @@ public:
   Snake(Snake const &);
   Snake &operator=(Snake const &);
 
+  int		getSize() const;
+  int		getSpeed() const;
+  void		setSpeed(int);
+
   /******************************/
   /*		CHANGES		*/
   /******************************/
 
   void		growUp(int _x, int _y, Map &);
   void	        addSnakeInMap(Map &);
+
   /******************************/
   /*		MOVE		*/
   /******************************/

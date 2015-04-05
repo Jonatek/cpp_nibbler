@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Sat Apr  4 18:26:43 2015 Jonathan Quach
+// Last update Sun Apr  5 03:40:40 2015 Daniel Han
 //
 
 #ifndef MAP_HPP_
@@ -47,12 +47,10 @@ public:
   //
 public:
   ObjectType getObject(int, int) const;
-  void addRandomObject(ObjectType);
+  void addRandomObject(ObjectType, bool);
   bool addObject(int, int, ObjectType);
   void removeObject(int, int);
   void drawObjects();
-  int	getX(int);
-  int	getY(int);
 };
 
 #endif /* !MAP_HPP_ */

@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 18:24:17 2015 Jonathan Quach
+// Last update Sun Apr  5 04:04:21 2015 Daniel Han
 //
 
 #include "Game.hpp"
@@ -37,22 +37,30 @@ void		Game::playGame()
   Snake		_snake(this->_x, this->_y, this->_gui);
   Event		quit;
 
-  _map.drawObjects();
   _snake.addSnakeInMap(_map);
+  _map.drawObjects();
   while (this->_loop)
     {
       // Game _game(_gui, _caseX, _caseY);
       // _game->startGame();
-      this->updateGame();
+      this->updateGame(_snake);
       if (_snake.move(_ev.getEventType(), _map) == QUIT)
-	_loop = false;
-      usleep(60000);
+	this->_loop = false;
+      usleep(_snake.getSpeed());
     }
 }
 
-void		Game::updateGame()
+void		Game::updateGame(Snake & _snake)
 {
-  _ev.setEventType(this->_gui->updateEvent());
-  if (_ev.getEventType() == QUIT)
+  EventType	new_event;
+
+  this->_ev.setEventType(this->_gui->updateEvent());
+  new_event = this->_ev.getEventType();
+  if (new_event == QUIT)
     this->_loop = false;
+  else if (new_event == SPACE)
+    {
+      _snake.setSpeed(_snake.getSpeed() - 5000);
+      this->_ev.setOldEvent();
+    }
 }

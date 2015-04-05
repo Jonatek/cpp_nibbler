@@ -5,11 +5,12 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sat Apr  4 18:38:05 2015 Jonathan Quach
+// Last update Sun Apr  5 03:41:40 2015 Daniel Han
 //
 
 #include <stdlib.h>
 #include "Map.hpp"
+#include "Position.hpp"
 
 //
 // Coplien Form
@@ -45,8 +46,15 @@ Map::~Map()
 //
 void	Map::initMap(int caseX, int caseY)
 {
+  int	i = 0;
+
   initWall(caseX, caseY);
-  addRandomObject(FOOD);
+  addRandomObject(FOOD, false);
+  while (i < ((caseX * caseY) / 100))
+    {
+      addRandomObject(WALL, false);
+      ++i;
+    }
 }
 
 void	Map::initWall(int caseX, int caseY)
@@ -89,29 +97,26 @@ ObjectType Map::getObject(int x, int y) const
   return (this->_objects[y * this->_caseX + x]);
 }
 
-void Map::addRandomObject(ObjectType object)
+void Map::addRandomObject(ObjectType object, bool draw)
 {
-  int	pos;
-  int	deathdoor = 500;
+  Position      pos(rand() % this->_caseX, rand() % this->_caseY);
+  int	        x;
+  int		y;
+  int		deathdoor = 500;
 
-  if (object == FOOD)
-    std::cout << "FOOOOOOOOOOOOOOD ADDDED" << std::endl;
-
-  pos = rand() % (this->_caseX * this->_caseY);
-  while (this->_objects[pos] != NOTHING)
+  x = pos.getX();
+  y = pos.getY();
+  while (this->_objects[y * this->_caseX + x] != NOTHING)
     {
-      pos = rand() % (this->_caseX * this->_caseY);
+      pos.setX(rand() % this->_caseX);
+      pos.setY(rand() % this->_caseY);
+      x = pos.getX();
+      y = pos.getY();
       --deathdoor;
     }
-  this->_objects[pos] = object;
-
-  int i = 0;
-  while (i != _caseX * _caseY)
-    {
-      if (_objects[i] == FOOD)
-	std::cout << "FOOOD DE MERDE : " << i << std::endl;
-      ++i;
-    }
+  this->_objects[y * this->_caseX + x] = object;
+  if (draw == true)
+    this->_gui->drawSquare(x, y, FOOD);
 }
 
 bool Map::addObject(int x, int y, ObjectType object)
@@ -134,21 +139,12 @@ void Map::removeObject(int x, int y)
 
   if (this->_objects[pos] == FOOD)
     {
-      addObject(x, y, FOOD);
       this->_objects[pos] = NOTHING;
+      if (rand() % 3 == 0)
+	addRandomObject(POISON, true);
     }
   else
     this->_objects[pos] = NOTHING;
-}
-
-int	Map::getX(int pos)
-{
-  return (pos / this->_caseY);
-}
-
-int	Map::getY(int pos)
-{
-  return (pos % this->_caseY);
 }
 
 void	Map::drawObjects()
@@ -166,8 +162,6 @@ void	Map::drawObjects()
 	    _gui->drawSquare(x, y, WALL);
 	  else if (getObject(x, y) == FOOD)
 	    _gui->drawSquare(x, y, FOOD);
-	  // else if (getObject(x, y) == NOTHING)
-	  //   _gui->drawSquare(x, y, NOTHING);
 	  ++x;
 	}
       ++y;

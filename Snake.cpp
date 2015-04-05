@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Tue Mar 24 12:26:42 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 19:11:00 2015 Jonathan Quach
+// Last update Sun Apr  5 04:11:37 2015 Daniel Han
 //
 
 #include <iostream>
@@ -13,7 +13,7 @@
 #include "Snake.hpp"
 
 Snake::Snake(int _x, int _y, IGui *_gui)
-  : x(_x), y(_y), snakeSize(4), gui(_gui)
+  : x(_x), y(_y), size(4), speed(100000), gui(_gui)
 {
   body.push_back(Position(x / 2 , y / 2));
   body.push_back(Position(x / 2 - 1, y / 2));
@@ -24,6 +24,24 @@ Snake::Snake(int _x, int _y, IGui *_gui)
       std::cout << it->getX() << " " << it->getY() << std::endl;
       gui->drawSquare(it->getX(), it->getY(), BODY);
     }
+}
+
+int		Snake::getSize() const
+{
+  return (this->size);
+}
+
+int		Snake::getSpeed() const
+{
+  return (this->speed);
+}
+
+void		Snake::setSpeed(int new_speed)
+{
+  if (this->speed < MAX_SPEED)
+    this->speed = MAX_SPEED;
+  else
+    this->speed = new_speed;
 }
 
 void		Snake::addSnakeInMap(Map &map)
@@ -38,9 +56,10 @@ void		Snake::growUp(int _x, int _y, Map &map)
 {
   Position	head(_x, _y);
 
-  std::cout << "MMMMMMMMMMIIIIIAAAAAAAMMMMM" << std::endl;
+  // std::cout << "MMMMMMMMMMIIIIIAAAAAAAMMMMM" << std::endl;
 
-  this->snakeSize += 1;
+  this->size += 1;
+  setSpeed(this->speed - 5000);
   body.push_front(head);
   gui->drawSquare(_x, _y, BODY);
   map.addObject(_x, _y, HEAD);
@@ -56,34 +75,22 @@ EventType	Snake::checkObject(Map &map)
   std::cout << "OBJ X =  " << _x << " OBJ Y = " << _y << std::endl;
   if (obj == WALL || obj == BODY || obj == HEAD)
     {
-      if (obj == WALL)
-	std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
-      if (obj == BODY)
-      	{
-      	  std::cout << "x : " << _x << " y : " << _y << std::endl;
-      	  std::cout << "SO DUMB" << std::endl;
-      	}
+      // if (obj == WALL)
+      // 	std::cout << "DIIIIIIIIIIIIIIIIIEEEEEE BITCH" << std::endl;
+      // if (obj == BODY)
+      // 	{
+      // 	  std::cout << "x : " << _x << " y : " << _y << std::endl;
+      // 	  std::cout << "SO DUMB" << std::endl;
+      // 	}
       return QUIT;
     }
-  if (obj == FOOD)
+  else if (obj == FOOD)
     {
-      if (obj == FOOD)
-      	{
-	  std::cout << "EAAAAATIIINNNG DAT SHIT" << std::endl;
-	  growUp(_x, _y, map);
-
-	  Position food(rand() % x, rand() % y);
-
-	  while (map.addObject(food.getX(), food.getY(), FOOD) == false)
-	    {
-	      food.setX(rand() % x);
-	      food.setY(rand() % y);
-	    }
-	  gui->drawSquare(food.getX(), food.getY(), FOOD);
-	  std::cout << "-----------> SUCCESSFULLY ADD FOOD ON DAT FUCKING MAP"
-		    << std::endl;
-      	}
+      growUp(_x, _y, map);
+      map.addRandomObject(FOOD, true);
     }
+  else if (obj == POISON)
+    setSpeed(this->speed + 5000);
   return NONE;
 }
 
@@ -99,7 +106,7 @@ EventType	 Snake::move(EventType direction, Map &map)
     head = *(body.begin()) + Position(0, -1);
   else if (direction == DOWN)
     head = *(body.begin()) + Position(0, 1);
-  else if (direction == NONE)
+  else if (direction == NONE || direction == PAUSE)
     return NONE;
   else
     head = *(body.begin());

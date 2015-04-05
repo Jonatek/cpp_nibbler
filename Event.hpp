@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Thu Mar 26 19:40:57 2015 Jonathan Quach
-// Last update Fri Apr  3 19:07:43 2015 Daniel Han
+// Last update Sun Apr  5 04:21:26 2015 Daniel Han
 //
 
 #ifndef _EVENT_HPP
@@ -20,7 +20,8 @@ typedef enum
     DOWN,
     ENTER,
     QUIT,
-    PAUSE
+    PAUSE,
+    SPACE
   } EventType;
 
 class Event
@@ -34,9 +35,13 @@ public:
   ~Event();
 
   EventType getEventType() const;
-  void snakeStartMoving(EventType input);
-  void setNewDirection(EventType direction);
-  void setEventType(EventType type);
+  void setOldEvent();
+  void snakeStartMoving(EventType);
+  void snakeSpeedBoost();
+  void setNewDirection(EventType);
+  void gameToPause();
+  void gameInPause(EventType);
+  void setEventType(EventType);
 
 };
 

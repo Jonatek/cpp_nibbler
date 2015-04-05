@@ -5,17 +5,17 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 18:12:05 2015 Jean-Paul SAYSANA
-// Last update Sat Apr  4 15:37:41 2015 Jonathan Quach
+// Last update Sun Apr  5 03:53:02 2015 Daniel Han
 //
 
 #ifndef GAME_HPP_
 # define GAME_HPP_
 
+#include <unistd.h>
 #include <iostream>
 #include "Map.hpp"
 #include "IGui.hpp"
 #include "Snake.hpp"
-#include <unistd.h>
 
 class Game
 {
@@ -43,7 +43,7 @@ public:
   Game & operator=(Game const &);
   ~Game();
 
-  void	updateGame();
+  void	updateGame(Snake &);
   void  playGame();
   void	displayGame();
 };

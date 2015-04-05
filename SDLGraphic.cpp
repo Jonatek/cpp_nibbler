@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sat Apr  4 13:13:30 2015 Jonathan Quach
+// Last update Sun Apr  5 04:00:59 2015 Daniel Han
 //
 
 #include <iostream>
@@ -62,6 +62,10 @@ EventType SDLGraphic::updateEvent()
 	  return LEFT;
 	if (event.key.keysym.sym == SDLK_RIGHT)
 	  return RIGHT;
+	if (event.key.keysym.sym == SDLK_SPACE)
+	  return SPACE;
+	if (event.key.keysym.sym == SDLK_p)
+	  return PAUSE;
       }
     }
   return NONE;

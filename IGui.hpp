@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 20:34:14 2015 Jonathan Quach
-// Last update Sat Apr  4 12:38:38 2015 Jonathan Quach
+// Last update Sun Apr  5 03:09:45 2015 Daniel Han
 //
 
 #ifndef _IGUI_HPP_
@@ -19,7 +19,8 @@ typedef enum
     WALL,
     HEAD,
     BODY,
-    FOOD
+    FOOD,
+    POISON
   } ObjectType;
 
 class IGui

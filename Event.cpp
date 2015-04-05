@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Sat Apr  4 18:48:55 2015 Jonathan Quach
+// Last update Sun Apr  5 04:21:10 2015 Daniel Han
 //
 
 #include <iostream>
@@ -26,12 +26,23 @@ EventType Event::getEventType() const
   return (this->_event);
 }
 
+void Event::setOldEvent()
+{
+  this->_event = this->_old;
+}
+
 void Event::snakeStartMoving(EventType input)
 {
   if (input == ENTER)
     this->_event = RIGHT;
   else if (input == QUIT)
     this->_event = QUIT;
+}
+
+void Event::snakeSpeedBoost()
+{
+  this->_old = this->_event;
+  this->_event = SPACE;
 }
 
 void Event::setNewDirection(EventType direction)
@@ -61,23 +72,37 @@ void Event::setNewDirection(EventType direction)
 
 }
 
+void Event::gameToPause()
+{
+  if (this->_event != PAUSE)
+    {
+      this->_old = this->_event;
+      this->_event = PAUSE;
+    }
+  else
+    this->_event = _old;
+}
+
+void Event::gameInPause(EventType input)
+{
+  if (input == PAUSE || input == ENTER)
+    this->_event = _old;
+  else if (input == QUIT)
+    this->_event = QUIT;
+}
+
 void Event::setEventType(EventType type)
 {
   if (this->_event == NONE)
     snakeStartMoving(type);
+  if (this->_event == PAUSE)
+    gameInPause(type);
+  else if (type == SPACE)
+    snakeSpeedBoost();
   else if (type == LEFT || type == RIGHT)
     setNewDirection(type);
   else if (type == PAUSE)
-    {
-      if (this->_event != PAUSE)
-	{
-	  this->_old = this->_event;
-	  this->_event = PAUSE;
-	}
-      else
-	this->_event = _old;
-    }
+    gameToPause();
   else if (type == QUIT)
     this->_event = QUIT;
-  std::cout << "event updated : " << this->_event << std::endl;
 }
