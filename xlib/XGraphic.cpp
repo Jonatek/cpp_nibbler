@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Sun Apr  5 05:29:49 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 10:45:03 2015 Jean-Paul SAYSANA
+// Last update Sun Apr  5 11:08:32 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -41,7 +41,7 @@ EventType	XGraphic::updateEvent()
       while (XPending(d) > 0)
 	XNextEvent(this->d, &e);
       switch (XLookupKeysym(&e.xkey, 0))
-	if(e.type == KeyPress)
+	if (e.type == KeyPress)
 	  {
 	  case (65293): //ENTER
 	    return (ENTER);
@@ -49,10 +49,14 @@ EventType	XGraphic::updateEvent()
 	    return (LEFT);
 	  case (65361): //RIGHT
 	    return (RIGHT);
-	  case (65307):
+	  case (65307): //ESCAPE
 	    return (QUIT);
-	  default:
-	    return NONE;
+	  case (112): // PAUSE
+	    return (PAUSE);
+	  case (103): //GOD_MODE
+	    return (GOD_MODE);
+	  case (102): //ADD FOOD
+	    return (FOOD_PUSH);
 	  }
     }
   return NONE;
