@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Sat Apr  4 17:05:34 2015 Daniel Han
-// Last update Sun Apr  5 01:54:21 2015 Daniel Han
+// Last update Sun Apr  5 10:00:47 2015 Jean-Paul SAYSANA
 //
 
 #include <iostream>
@@ -61,8 +61,9 @@ void NcursesGraphic::removeSquare(int x, int y)
   mvwaddch(this->_window, y, x, ' ');
 }
 
-EventType NcursesGraphic::updateEvent(Event & _newEvent)
+EventType NcursesGraphic::updateEvent()
 {
+  Event _newEvent;
   int	ch;
 
   ch = getch();
