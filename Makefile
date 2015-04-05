@@ -5,7 +5,7 @@
 ## Login  <jonathan.quach@epitech.eu>
 ## 
 ## Started on  Tue Mar 24 09:55:00 2015 Jonathan Quach
-## Last update Sat Apr  4 12:26:04 2015 Jonathan Quach
+## Last update Sat Apr  4 19:29:29 2015 Jonathan Quach
 ##
 
 CORE		= 	nibbler
@@ -29,7 +29,7 @@ CORE_OBJ	= 	$(CORE_SRC:.cpp=.o)
 
 SDL		=	lib_nibbler_sdl.so
 
-SDLFLAGS	=	-lSDL
+SDLFLAGS	=	-lSDL -lSDL_ttf
 
 SDL_SRC		=	SDLGraphic.cpp \
 			ErrorException.cpp \

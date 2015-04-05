@@ -1,11 +1,11 @@
 //
 // SDLGraphic.cpp for  in /home/quach_a/Lab/cpp_nibbler
-// 
+//
 // Made by Jonathan Quach
 // Login  <jonathan.quach@epitech.eu>
-// 
+//
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Apr  5 07:36:43 2015 Daniel Han
+// Last update Sun Apr  5 10:22:11 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -16,6 +16,10 @@ SDLGraphic::SDLGraphic()
   if (SDL_Init(SDL_INIT_VIDEO) < 0)
     throw ErrorException(std::string("Error SDL_Init : ")
 			 + SDL_GetError());
+    // Init SDL_tff lib
+  if (TTF_Init() == -1)
+    throw ErrorException(std::string("Error TTF_Init : ")
+  			 + SDL_GetError());
 }
 
 SDLGraphic::~SDLGraphic()
@@ -44,6 +48,18 @@ void SDLGraphic::createWindow(int const x, int const y)
   SDL_FillRect(this->_window, NULL,
 	       SDL_MapRGB(this->_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
+
+
+  // Load font
+  // TTF_Font *font;
+
+  // if ((font = TTF_OpenFont("./OpenSans-Light.ttf", 16)) == NULL)
+  //   throw ErrorException(std::string("Error TTF_OpenFont :")
+  // 			 + SDL_GetError());
+
+  // // Write text
+  // SDL_Surface *_text;
+  // SDL_Color text_color = {255, 255, 255};
 }
 
 EventType SDLGraphic::updateEvent()
