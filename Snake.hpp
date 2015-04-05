@@ -1,15 +1,15 @@
 //
-// snake.hh for qsd in /home/saysan_j/cpp_nibbler
+// Snake.hpp for Snake.hpp in /home/han_d/Github/cpp_nibbler
 // 
-// Made by Jean-Paul SAYSANA
-// Login   <saysan_j@epitech.net>
+// Made by Daniel Han
+// Login   <han_d@epitech.net>
 // 
-// Started on  Tue Mar 24 12:26:40 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 05:52:16 2015 Daniel Han
+// Started on  Sun Apr  5 07:25:22 2015 Daniel Han
+// Last update Sun Apr  5 07:25:45 2015 Daniel Han
 //
 
-#ifndef		SNAKE_HPP_
-# define	SNAKE_HPP_
+#ifndef _SNAKE_HPP_
+# define _SNAKE_HPP_
 
 #include <list>
 #include "Event.hpp"
@@ -19,42 +19,47 @@
 
 #define MAX_SPEED 20000
 
-class		Snake
+class Snake
 {
+  //
+  // Attributs
+  //
 private:
-  bool		god_mode;
-  int		x;
-  int		y;
-  int	        size;
-  int		speed;
-  IGui		*gui;
+  bool god_mode;
+  int x;
+  int y;
+  int size;
+  int speed;
+  IGui *gui;
   std::list<Position> body;
 
+  //
+  // Coplien form
+  //
 public:
-  Snake(int, int, IGui *);
+  Snake(int const, int const, IGui *);
   Snake(Snake const &);
   Snake &operator=(Snake const &);
   ~Snake();
 
-  int		getSize() const;
-  int		getSpeed() const;
-  void		setSpeed(int);
-  void		setGodMode();
+  //
+  // Getters & Setters
+  //
+public:
+  int getSize() const;
+  int getSpeed() const;
+  void setSpeed(int const);
+  void setGodMode();
 
-  /******************************/
-  /*		CHANGES		*/
-  /******************************/
-
-  void		growUp(int _x, int _y, Map &);
-  void	        addSnakeInMap(Map &);
-
-  /******************************/
-  /*		MOVE		*/
-  /******************************/
-
-  EventType	move(EventType, Map &);
-  EventType	checkObject(Map &);
+  //
+  // Display/Modify Snake
+  //
+public:
+  void growUp(int const, int const, Map &);
+  void addSnakeInMap(Map &);
+  EventType move(EventType const, Map &);
+  EventType checkObject(Map &);
 
 };
 
-#endif	/*	!SNAKE_HPP_	*/
+#endif /* !_SNAKE_HPP_ */

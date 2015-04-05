@@ -1,8 +1,10 @@
 LISTE DES TACHES
 
       > GRAPHISME
+      	- Nouvelle texture pour la bouffe empoisonnée
+	- Nouvelle texture pour les obstacles
+	- Nouvelle texture pour la tete du snake
 	- Finir les libraires graphiques (OpenGL + Ncurses) // Daniel pue
-      	- Nouvelle texture pour la bouffe empoisonnée et/ou les obstacles
 	- 
 
       > CORE
@@ -14,3 +16,4 @@ LISTE DES TACHES
 	- Enlever tous les commentaires et affichage test
       	- Ne pas oublier le moindre référence
 	- Ne pas oublier le moindre const (variables, fonctions et params)
+	- 

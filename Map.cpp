@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Thu Apr  2 15:42:47 2015 Daniel Han
-// Last update Sun Apr  5 06:03:52 2015 Daniel Han
+// Last update Sun Apr  5 07:32:44 2015 Daniel Han
 //
 
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 //
 // Coplien Form
 //
-Map::Map(int caseX, int caseY, IGui *gui) :
+Map::Map(int const caseX, int const caseY, IGui *gui) :
   _caseX(caseX), _caseY(caseY), _gui(gui)
 {
   this->_objects.clear();
@@ -50,25 +50,27 @@ Map::~Map()
 //
 // Init Map
 //
-void	Map::initMap(int caseX, int caseY)
+void Map::initMap(int const caseX, int const caseY)
 {
   initWall(caseX, caseY);
   initRandomFood();
   initRandomBlock(caseX, caseY);
 }
 
-void	Map::initWall(int caseX, int caseY)
+void Map::initWall(int const caseX, int const caseY)
 {
-  int	x;
+  int x;
+  int y;
 
   x = 0;
+  y = caseY;
   while (x < caseX)
     {
       _objects.push_back(WALL);
       ++x;
     }
-  --caseY;
-  while (caseY > 1)
+  --y;
+  while (y > 1)
     {
       x = 0;
       while (x < caseX)
@@ -79,7 +81,7 @@ void	Map::initWall(int caseX, int caseY)
 	    _objects.push_back(NOTHING);
 	  ++x;
 	}
-      --caseY;
+      --y;
     }
   x = 0;
   while (x < caseX)
@@ -94,9 +96,9 @@ void Map::initRandomFood()
   addRandomObject(FOOD, false);
 }
 
-void Map::initRandomBlock(int caseX, int caseY)
+void Map::initRandomBlock(int const caseX, int const caseY)
 {
-  int	i = 0;
+  int i = 0;
 
   while (i < ((caseX * caseY) / 100))
     {
@@ -106,19 +108,19 @@ void Map::initRandomBlock(int caseX, int caseY)
 }
 
 //
-// Get/Add/Remove Object
+// Get/Add/Remove/Draw Object
 //
-ObjectType Map::getObject(int x, int y) const
+ObjectType Map::getObject(int const x, int const y) const
 {
   return (this->_objects[y * this->_caseX + x]);
 }
 
-void Map::addRandomObject(ObjectType object, bool draw)
+void Map::addRandomObject(ObjectType const object, bool const draw)
 {
-  Position      pos(rand() % this->_caseX, rand() % this->_caseY);
-  int	        x;
-  int		y;
-  int		deathdoor = 500;
+  Position pos(rand() % this->_caseX, rand() % this->_caseY);
+  int x;
+  int y;
+  int deathdoor = 500;
 
   x = pos.getX();
   y = pos.getY();
@@ -135,11 +137,11 @@ void Map::addRandomObject(ObjectType object, bool draw)
     this->_gui->drawSquare(x, y, object);
 }
 
-bool Map::addObject(int x, int y, ObjectType object)
+bool Map::addObject(int const x, int const y, ObjectType const object)
 {
-  int	pos = y * this->_caseX + x;
+  int pos = y * this->_caseX + x;
 
-  std::cout << "pos ----> " << pos << " x : " << x << " y : " << y << " caseX : " << _caseX << std::endl;
+  // std::cout << "pos ----> " << pos << " x : " << x << " y : " << y << " caseX : " << _caseX << std::endl;
   if (this->_objects[pos] == NOTHING)
     {
       this->_objects[pos] = object;
@@ -149,9 +151,9 @@ bool Map::addObject(int x, int y, ObjectType object)
     return false;
 }
 
-void Map::removeObject(int x, int y)
+void Map::removeObject(int const x, int const y)
 {
-  int	pos = y * this->_caseX + x;
+  int pos = y * this->_caseX + x;
 
   if (this->_objects[pos] == FOOD)
     {
@@ -168,11 +170,11 @@ void Map::removeObject(int x, int y)
   this->_objects[pos] = NOTHING;
 }
 
-void	Map::drawObjects()
+void Map::drawObjects()
 {
-  ObjectType	obj;
-  int		y;
-  int		x;
+  ObjectType obj;
+  int y;
+  int x;
 
   y = 0;
   while (y < _caseY)

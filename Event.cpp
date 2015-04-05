@@ -5,26 +5,33 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Thu Mar 26 19:53:00 2015 Jonathan Quach
-// Last update Sun Apr  5 05:36:01 2015 Daniel Han
+// Last update Sun Apr  5 06:54:50 2015 Daniel Han
 //
 
 #include <iostream>
 #include "Event.hpp"
 
-Event::Event()
+//
+// Coplien form
+//
+Event::Event() :
+  _event(NONE), _old(NONE)
 {
-  this->_event = NONE;
 }
 
 Event::Event(Event const & other)
 {
-  this->_event = other.getEventType();
+  this->_event = other._event;
+  this->_old = other._old;
 }
 
 Event & Event::operator=(Event const & other)
 {
   if (this != &other)
-    this->_event = other.getEventType();
+    {
+      this->_event = other._event;
+      this->_old = other._old;
+    }
   return (*this);
 }
 
@@ -32,17 +39,23 @@ Event::~Event()
 {
 }
 
+//
+// Getter
+//
 EventType Event::getEventType() const
 {
   return (this->_event);
 }
 
+//
+// Setters : use input to modify event
+//
 void Event::setOldEvent()
 {
   this->_event = this->_old;
 }
 
-void Event::snakeStartMoving(EventType input)
+void Event::snakeStartMoving(EventType const input)
 {
   if (input == ENTER)
     this->_event = RIGHT;
@@ -50,7 +63,7 @@ void Event::snakeStartMoving(EventType input)
     this->_event = QUIT;
 }
 
-void Event::setNewDirection(EventType direction)
+void Event::setNewDirection(EventType const direction)
 {
   if (direction == LEFT)
     {
@@ -84,24 +97,24 @@ void Event::gameToPause()
       this->_event = PAUSE;
     }
   else
-    this->_event = _old;
+    this->_event = this->_old;
 }
 
-void Event::gameInPause(EventType input)
+void Event::gameInPause(EventType const input)
 {
   if (input == PAUSE || input == ENTER)
-    this->_event = _old;
+    this->_event = this->_old;
   else if (input == QUIT)
     this->_event = QUIT;
 }
 
-void Event::tempInput(EventType input)
+void Event::tempInput(EventType const input)
 {
   this->_old = this->_event;
   this->_event = input;
 }
 
-void Event::setEventType(EventType type)
+void Event::setEventType(EventType const type)
 {
   if (this->_event == NONE)
     snakeStartMoving(type);

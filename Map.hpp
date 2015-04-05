@@ -5,11 +5,11 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Wed Apr  1 14:23:42 2015 Daniel Han
-// Last update Sun Apr  5 04:43:35 2015 Daniel Han
+// Last update Sun Apr  5 07:32:54 2015 Daniel Han
 //
 
-#ifndef MAP_HPP_
-# define MAP_HPP_
+#ifndef _MAP_HPP_
+# define _MAP_HPP_
 
 #include <vector>
 #include <iostream>
@@ -22,15 +22,15 @@ class Map
   //
 private:
   std::vector<ObjectType> _objects;
-  int		_caseX;
-  int		_caseY;
-  IGui		*_gui;
+  int _caseX;
+  int _caseY;
+  IGui *_gui;
 
   //
   // Coplien Form
   //
 public:
-  Map(int, int, IGui *);
+  Map(int const, int const, IGui *);
   Map(Map const &);
   Map & operator=(Map const &);
   ~Map();
@@ -39,20 +39,21 @@ public:
   // Init Map
   //
 public:
-  void initMap(int, int);
-  void initWall(int, int);
+  void initMap(int const, int const);
+  void initWall(int const, int const);
   void initRandomFood();
-  void initRandomBlock(int, int);
+  void initRandomBlock(int const, int const);
 
   //
-  // Get/Add/Remove Object
+  // Get/Add/Remove/Draw Object
   //
 public:
-  ObjectType getObject(int, int) const;
-  void addRandomObject(ObjectType, bool);
-  bool addObject(int, int, ObjectType);
-  void removeObject(int, int);
+  ObjectType getObject(int const, int const) const;
+  void addRandomObject(ObjectType const, bool const);
+  bool addObject(int const, int const, ObjectType const);
+  void removeObject(int const, int const);
   void drawObjects();
+
 };
 
-#endif /* !MAP_HPP_ */
+#endif /* !_MAP_HPP_ */

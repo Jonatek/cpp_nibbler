@@ -5,19 +5,16 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Tue Mar 24 15:05:43 2015 Jonathan Quach
-// Last update Sat Apr  4 18:53:19 2015 Jonathan Quach
+// Last update Sun Apr  5 07:07:20 2015 Daniel Han
 //
 
-#include <dlfcn.h>
 #include "Nibbler.hpp"
 #include "ErrorException.hpp"
-#include "IGui.hpp"
 #include "Event.hpp"
 #include "Snake.hpp"
-#include "Map.hpp"
 #include "Game.hpp"
 
-Nibbler::Nibbler(const std::vector<std::string> &argv)
+Nibbler::Nibbler(std::vector<std::string> const & argv)
   : _loop(true)
 {
   int width;
@@ -27,7 +24,7 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
 
   if (argv.size() != 4)
     throw ErrorException("Usage : " + argv[0] +
-		    " <width> <height> <lib_nibbler_XXX.so>");
+			 " <width> <height> <lib_nibbler_XXX.so>");
   ss.str(argv[1]);
   ss >> width;
   if (width < 5 || width > 100)
@@ -37,14 +34,14 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   ss >> height;
   if (height < 5 || height > 100)
     throw ErrorException("Wrong size, <height> must be between 5 and 100");
-  _caseX = width;
-  _caseY = height;
+  this->_caseX = width;
+  this->_caseY = height;
   ss.clear();
   ss.str(argv[3]);
   ss >> libName;
 
-  _winX = width * 20;
-  _winY = height * 20;
+  this->_winX = width * 20;
+  this->_winY = height * 20;
 
   // void *dlopen(const char *filename, int flag)
   // dlopen loads the dynamic library file, and return an "opaque" handle
@@ -55,7 +52,7 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   // return an human readeable string describing the most recent error
   // from dlopen, dlsym or dlclose. NULL if no error
 
-  if ((_handle = dlopen(libName.c_str(), RTLD_LAZY)) == NULL)
+  if ((this->_handle = dlopen(libName.c_str(), RTLD_LAZY)) == NULL)
     throw ErrorException(dlerror());
 
   // void *dlsym(void *handle, const char *symbol)
@@ -64,7 +61,7 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
   // so it's not an error. call dlerror to check that.
 
   IGui *(*external_creator)();
-  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(_handle,
+  external_creator = reinterpret_cast<IGui* (*)()>(dlsym(this->_handle,
 							 "create_lib_instance"));
   if (external_creator == NULL)
     {
@@ -72,7 +69,7 @@ Nibbler::Nibbler(const std::vector<std::string> &argv)
       throw ErrorException(std::string("Error searching for symbol : ") + err);
     }
 
-   _gui = external_creator();
+  this->_gui = external_creator();
 }
 
 Nibbler::~Nibbler()
@@ -80,7 +77,7 @@ Nibbler::~Nibbler()
 
 }
 
-Nibbler::Nibbler(Nibbler const &other)
+Nibbler::Nibbler(Nibbler const & other)
 {
   this->_winX = other._winX;
   this->_winY = other._winY;
@@ -91,7 +88,7 @@ Nibbler::Nibbler(Nibbler const &other)
   this->_loop = other._loop;
 }
 
-Nibbler		&Nibbler::operator=(Nibbler const &other)
+Nibbler & Nibbler::operator=(Nibbler const & other)
 {
   if (this != &other)
     {
@@ -106,15 +103,15 @@ Nibbler		&Nibbler::operator=(Nibbler const &other)
   return (*this);
 }
 
-void		Nibbler::launchGame()
+void Nibbler::launchGame()
 {
-  //loop();
-  Game		game(_winX, _winY, _caseX, _caseY, _gui);
+  Game game(this->_winX, this->_winY, this->_caseX, this->_caseY,
+	    this->_gui);
 
   game.playGame();
 }
 
-void		*Nibbler::getHandler() const
+void *Nibbler::getHandler() const
 {
-  return _handle;
+  return (this->_handle);
 }

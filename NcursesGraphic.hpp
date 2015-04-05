@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Sat Apr  4 17:05:23 2015 Daniel Han
-// Last update Sat Apr  4 17:05:24 2015 Daniel Han
+// Last update Sun Apr  5 06:44:27 2015 Daniel Han
 //
 
 #ifndef NCURSESGRAPHIC_HPP_
@@ -17,6 +17,9 @@
 
 class NcursesGraphic : public IGui
 {
+  //
+  // Attributs
+  //
 private:
   WINDOW *_window;
 

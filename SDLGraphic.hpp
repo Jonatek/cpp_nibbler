@@ -5,11 +5,11 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:24:46 2015 Jonathan Quach
-// Last update Sat Apr  4 12:51:16 2015 Jonathan Quach
+// Last update Sun Apr  5 07:11:42 2015 Daniel Han
 //
 
-#ifndef _SDLGRAPHIC_HPP
-# define _SDLGRAPHIC_HPP
+#ifndef _SDLGRAPHIC_HPP_
+# define _SDLGRAPHIC_HPP_
 
 #include <SDL/SDL.h>
 #include <string>
@@ -21,6 +21,9 @@
 
 class SDLGraphic : public IGui
 {
+  //
+  // Attributs
+  //
 private:
   SDL_Surface *_window;
   SDL_Surface *_backgroundTexture;
@@ -32,10 +35,12 @@ public:
   SDLGraphic();
   virtual ~SDLGraphic();
 
-  virtual void createWindow(int, int);
+public:
+  virtual void createWindow(int const, int const);
   virtual EventType updateEvent();
-  virtual void drawSquare(int, int, ObjectType);
-  virtual void removeSquare(int, int);
+  virtual void drawSquare(int const, int const, ObjectType const);
+  virtual void removeSquare(int const, int const);
+
 };
 
 extern "C"
@@ -43,4 +48,4 @@ extern "C"
   IGui *create_lib_instance();
 }
 
-#endif
+#endif /* !_SDL_GRAPHIC_HPP_ */

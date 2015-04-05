@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 // 
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Apr  5 05:57:30 2015 Daniel Han
+// Last update Sun Apr  5 07:14:25 2015 Daniel Han
 //
 
 #include <iostream>
@@ -23,7 +23,7 @@ SDLGraphic::~SDLGraphic()
   SDL_Quit();
 }
 
-void SDLGraphic::createWindow(int x, int y)
+void SDLGraphic::createWindow(int const x, int const y)
 {
   // std::string err;
 
@@ -36,12 +36,13 @@ void SDLGraphic::createWindow(int x, int y)
   //   throw ErrorException(std::string("Error SDL_CreateWindow : ")
   // 			 + SDL_GetError());
 
-  _window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-  _snakeTexture = SDL_LoadBMP("./snakepart.bmp");
-  _backgroundTexture = SDL_LoadBMP("./background.bmp");
-  _wallTexture = SDL_LoadBMP("./wall.bmp");
-  _foodTexture = SDL_LoadBMP("./food.bmp");
-  SDL_FillRect(_window, NULL, SDL_MapRGB(_window->format, 0, 0, 0));
+  this->_window = SDL_SetVideoMode(x, y, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+  this->_snakeTexture = SDL_LoadBMP("./snakepart.bmp");
+  this->_backgroundTexture = SDL_LoadBMP("./background.bmp");
+  this->_wallTexture = SDL_LoadBMP("./wall.bmp");
+  this->_foodTexture = SDL_LoadBMP("./food.bmp");
+  SDL_FillRect(this->_window, NULL,
+	       SDL_MapRGB(this->_window->format, 0, 0, 0));
   SDL_WM_SetCaption("Nibbler", NULL);
 }
 
@@ -75,38 +76,38 @@ EventType SDLGraphic::updateEvent()
   return NONE;
 }
 
-void SDLGraphic::drawSquare(int x, int y, ObjectType type)
+void SDLGraphic::drawSquare(int const x, int const y, ObjectType const type)
 {
   SDL_Rect pos;
 
   pos.x = x * 20;
   pos.y = y * 20;
 
-  std::cout << pos.x << " " << pos.y << std::endl;
+  // std::cout << pos.x << " " << pos.y << std::endl;
   if (type == BODY)
     {
       SDL_BlitSurface(_snakeTexture, NULL, _window, &pos);
       // std::cout << "rendering "  << x << " " << y << std::endl;
       // SDL_RenderCopy(_mainRenderer, _snakeTexture, NULL, &pos);
     }
-  else if (type == WALL || type == BLOCK)
-    SDL_BlitSurface(_wallTexture, NULL, _window, &pos);
+  else if (type == WALL || type == BLOCK) // need something else
+    SDL_BlitSurface(this->_wallTexture, NULL, this->_window, &pos);
   else if (type == FOOD || type == POISON) // need something else
-    SDL_BlitSurface(_foodTexture, NULL, _window, &pos);
+    SDL_BlitSurface(this->_foodTexture, NULL, this->_window, &pos);
   else if (type == NOTHING)
-    SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
-  SDL_Flip(_window);
+    SDL_BlitSurface(this->_backgroundTexture, NULL, this->_window, &pos);
+  SDL_Flip(this->_window);
 }
 
-void	SDLGraphic::removeSquare(int x, int y)
+void	SDLGraphic::removeSquare(int const x, int const y)
 {
   SDL_Rect pos;
 
   pos.x = x * 20;
   pos.y = y * 20;
 
-  SDL_BlitSurface(_backgroundTexture, NULL, _window, &pos);
-  SDL_Flip(_window);
+  SDL_BlitSurface(this->_backgroundTexture, NULL, this->_window, &pos);
+  SDL_Flip(this->_window);
 }
 
 extern "C"

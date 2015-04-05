@@ -5,11 +5,14 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 06:05:52 2015 Daniel Han
+// Last update Sun Apr  5 06:57:33 2015 Daniel Han
 //
 
 #include "Game.hpp"
 
+//
+// Coplien form
+//
 Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
   : _winX(winX), _winY(winY), _x(x), _y(y), _gui(gui), _map(_x, _y, _gui)
 {
@@ -45,21 +48,18 @@ Game::~Game()
 {
 }
 
-void		Game::displayGame()
+//
+// The Game
+//
+void Game::playGame()
 {
-}
-
-void		Game::playGame()
-{
-  Snake		snake(this->_x, this->_y, this->_gui);
-  Event		quit;
+  Snake snake(this->_x, this->_y, this->_gui);
+  Event quit;
 
   this->_map.drawObjects();
   snake.addSnakeInMap(_map);
   while (this->_loop)
     {
-      // Game _game(_gui, _caseX, _caseY);
-      // _game->startGame();
       this->handleInput(snake);
       if (snake.move(_ev.getEventType(), _map) == QUIT)
 	this->_loop = false;
@@ -67,9 +67,9 @@ void		Game::playGame()
     }
 }
 
-void		Game::handleInput(Snake & snake)
+void Game::handleInput(Snake & snake)
 {
-  EventType     input;
+  EventType input;
 
   this->_ev.setEventType(this->_gui->updateEvent());
   input = this->_ev.getEventType();
@@ -79,7 +79,7 @@ void		Game::handleInput(Snake & snake)
     updateGame(snake, input);
 }
 
-void		Game::updateGame(Snake & snake, EventType input)
+void Game::updateGame(Snake & snake, EventType const input)
 {
   if (input == SPACE)
     {
