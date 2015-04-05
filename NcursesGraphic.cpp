@@ -5,7 +5,7 @@
 // Login   <han_d@epitech.net>
 // 
 // Started on  Sat Apr  4 17:05:34 2015 Daniel Han
-// Last update Sun Apr  5 01:54:21 2015 Daniel Han
+// Last update Sun Apr  5 11:44:38 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -33,11 +33,12 @@ NcursesGraphic::~NcursesGraphic()
   if (this->_window != NULL)
     delwin(this->_window);
   endwin();
+  std::cout << "destroyed window " << std::endl;
 }
 
 void NcursesGraphic::createWindow(int x, int y)
 {
-  this->_window = newwin(y * 20, x * 20, 0, 3);
+  this->_window = newwin(y * 20, x * 20, 0, 0);
   wrefresh(this->_window);
 }
 
@@ -61,27 +62,32 @@ void NcursesGraphic::removeSquare(int x, int y)
   mvwaddch(this->_window, y, x, ' ');
 }
 
-EventType NcursesGraphic::updateEvent(Event & _newEvent)
+EventType NcursesGraphic::updateEvent()
 {
   int	ch;
 
   ch = getch();
+  // std::cout << "ch == " << ch << std::endl;
   switch (ch)
     {
     case KEY_LEFT:
-      _newEvent.setEventType(LEFT);
-      break;
+      return LEFT;
     case KEY_RIGHT:
-      _newEvent.setEventType(RIGHT);
-      break;
-    case KEY_ENTER:
-      _newEvent.setEventType(ENTER);
-      break;
+      return RIGHT;
+    case 10: // ENTER
+      return ENTER;
     case 27:
-      _newEvent.setEventType(QUIT);
-      break;
+      return QUIT;
+    case 32:
+      return SPACE;
+    case 112:
+      return PAUSE;
+    case 103:
+      return GOD_MODE;
+    case 102:
+      return FOOD_PUSH;
     }
-  return (_newEvent.getEventType());
+  return NONE;
 }
 
 extern "C"

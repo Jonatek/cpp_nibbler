@@ -5,7 +5,7 @@
 // Login  <jonathan.quach@epitech.eu>
 //
 // Started on  Wed Mar 25 21:21:53 2015 Jonathan Quach
-// Last update Sun Apr  5 10:22:11 2015 Jonathan Quach
+// Last update Sun Apr  5 11:33:49 2015 Jonathan Quach
 //
 
 #include <iostream>
@@ -25,6 +25,7 @@ SDLGraphic::SDLGraphic()
 SDLGraphic::~SDLGraphic()
 {
   SDL_Quit();
+  std::cout << "SDL QUIT !!!" << std::endl;
 }
 
 void SDLGraphic::createWindow(int const x, int const y)
@@ -79,13 +80,13 @@ EventType SDLGraphic::updateEvent()
 	  return LEFT;
 	if (event.key.keysym.sym == SDLK_RIGHT)
 	  return RIGHT;
-	if (event.key.keysym.sym == SDLK_SPACE)
+	if (event.key.keysym.sym == SDLK_SPACE) // 32
 	  return SPACE;
-	if (event.key.keysym.sym == SDLK_p)
+	if (event.key.keysym.sym == SDLK_p) // 112
 	  return PAUSE;
-	if (event.key.keysym.sym == SDLK_g)
+	if (event.key.keysym.sym == SDLK_g) // 103
 	  return GOD_MODE;
-	if (event.key.keysym.sym == SDLK_f)
+	if (event.key.keysym.sym == SDLK_f) // 102
 	  return FOOD_PUSH;
       }
     }

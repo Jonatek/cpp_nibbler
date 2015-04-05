@@ -5,7 +5,7 @@
 // Login   <saysan_j@epitech.net>
 // 
 // Started on  Thu Apr  2 16:45:00 2015 Jean-Paul SAYSANA
-// Last update Sun Apr  5 06:57:33 2015 Daniel Han
+// Last update Sun Apr  5 11:42:39 2015 Jonathan Quach
 //
 
 #include "Game.hpp"
@@ -20,32 +20,9 @@ Game::Game(int const winX, int const winY, int const x, int const y, IGui *gui)
   this->_gui->createWindow(_winX, _winY);
 }
 
-// Game::Game(Game const & other)
-// {
-//   this->_winX = other._winX;
-//   this->_winY = other._winY;
-//   this->_x = other._x;
-//   this->_y = other._x;
-//   this->_gui = other._gui;
-//   this->_map = other._map;
-// }
-
-// Game & Game::operator=(Game const &other)
-// {
-//   if (this != &other)
-//     {
-//       this->_winX = other._winX;
-//       this->_winY = other._winY;
-//       this->_x = other._x;
-//       this->_y = other._x;
-//       this->_gui = other._gui;
-//       this->_map = other._map;
-//     }
-//   return (*this);
-// }
-
 Game::~Game()
 {
+  std::cout << "GAME DESTROYED" << std::endl;
 }
 
 //
@@ -54,7 +31,6 @@ Game::~Game()
 void Game::playGame()
 {
   Snake snake(this->_x, this->_y, this->_gui);
-  Event quit;
 
   this->_map.drawObjects();
   snake.addSnakeInMap(_map);
@@ -65,6 +41,7 @@ void Game::playGame()
 	this->_loop = false;
       usleep(snake.getSpeed());
     }
+  delete _gui;
 }
 
 void Game::handleInput(Snake & snake)
